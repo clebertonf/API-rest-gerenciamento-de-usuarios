@@ -9,6 +9,15 @@ const createUserBank = async (name, email, password) => {
   }
 };
 
+const checkUserBankWithEmail = async (email) => {
+  try {
+    return await connection().then((db) => db.collection('users').findOne({ email }));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   createUserBank,
+  checkUserBankWithEmail,
 };

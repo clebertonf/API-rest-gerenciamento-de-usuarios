@@ -10,7 +10,7 @@ const passwordLength = {
 
 const emailExists = {
   code: 409,
-  message: 'Senha deve ter no minimo 6 caracteres!',
+  message: 'Usuario ja cadastrado na base de dados!',
 };
 
 module.exports = {

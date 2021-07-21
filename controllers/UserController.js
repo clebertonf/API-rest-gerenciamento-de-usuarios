@@ -6,7 +6,8 @@ const createUser = async (req, resp) => {
   const { name, email, password } = req.body;
 
   const dataValidation = UserServices.validationEmptyFields(name, email, password)
-     || UserServices.validatePasswordLength(password);
+     || UserServices.validatePasswordLength(password)
+     || await UserServices.existingEmailValidation(email);
 
   if (!dataValidation) {
     const saltRounds = 10;
