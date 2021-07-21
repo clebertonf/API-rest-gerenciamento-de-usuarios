@@ -1,4 +1,4 @@
-const { emptyFields, passwordLength } = require('./messagesErro');
+const { emptyFields, passwordLength, emailExists } = require('./messagesErro');
 
 const validationEmptyFields = (name, email, password) => {
   if (!name || !email || !password) return emptyFields;
