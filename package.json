@@ -4,7 +4,10 @@
   "description": "Uma aplicação para gerenciar contas de usuarios",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "nodemon index.js",
+    "start": "node index.js",
+    "lint": "./node_modules/.bin/eslint ."
   },
   "repository": {
     "type": "git",
