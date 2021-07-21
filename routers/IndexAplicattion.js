@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const UserController = require('../controllers/UserController');
+const IndexAplicattion = require('../controllers/IndexAplicattion');
 
-router.get('/', UserController.createUser);
+router.get('/', IndexAplicattion.userIndex);
 
 module.exports = router;

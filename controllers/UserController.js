@@ -3,6 +3,5 @@ const createUser = (_req, resp) => {
 };
 
 module.exports = {
-  userIndex,
   createUser,
 };
