@@ -1,7 +1,7 @@
-const { emputValues } = require('./messagesErro');
+const { emptyFields } = require('./messagesErro');
 
 const dataValidation = (name, email, password) => {
-  if (!name || !email || !password) return emputValues;
+  if (!name || !email || !password) return emptyFields;
   return true;
 };
 
