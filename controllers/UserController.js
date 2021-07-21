@@ -5,7 +5,12 @@ const createUser = (req, resp) => {
 
   const dataValidation = UserServices.dataValidation(name, email, password);
 
-  resp.status(200).json({ message: 'Rota para criar user' });
+  if (dataValidation.code) {
+    return resp.status(dataValidation.code)
+      .json({ message: dataValidation.message });
+  }
+
+  return resp.status(200).json({ message: 'Criado com sucesso' });
 };
 
 module.exports = {
