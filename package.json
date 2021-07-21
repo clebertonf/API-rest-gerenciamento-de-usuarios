@@ -1,0 +1,19 @@
+{
+  "name": "api-rest-gerenciamento-de-usuarios",
+  "version": "1.0.0",
+  "description": "Uma aplicação para gerenciar contas de usuarios",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clebertonf/API-rest-gerenciamento-de-usuarios.git"
+  },
+  "author": "Cleberton <clebertonfgc@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clebertonf/API-rest-gerenciamento-de-usuarios/issues"
+  },
+  "homepage": "https://github.com/clebertonf/API-rest-gerenciamento-de-usuarios#readme"
+}
