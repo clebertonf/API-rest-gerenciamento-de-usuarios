@@ -8,10 +8,8 @@ const createUser = (req, resp) => {
 
   if (!dataValidation) return resp.status(200).json({ message: 'Criado com sucesso' });
 
-  if (dataValidation.code) {
-    return resp.status(dataValidation.code)
-      .json({ message: dataValidation.message });
-  }
+  return resp.status(dataValidation.code)
+    .json({ message: dataValidation.message });
 };
 
 module.exports = {
