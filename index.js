@@ -6,9 +6,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.get('/', (_req, resp) => {
-  resp.status(200).json({ message: 'Ola mundo' });
-});
+app.use(require('./routers/index'));
 
 const { PORT } = process.env || 3000;
 
