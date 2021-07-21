@@ -1,10 +1,18 @@
-const { emptyFields } = require('./messagesErro');
+const { emptyFields, passwordLength } = require('./messagesErro');
 
 const validationEmptyFields = (name, email, password) => {
   if (!name || !email || !password) return emptyFields;
-  return true;
+};
+
+// const existingEmailValidation = (email) => {
+//     return
+// };
+
+const validatePasswordLength = (password) => {
+  if (password.length < 6) return passwordLength;
 };
 
 module.exports = {
   validationEmptyFields,
+  validatePasswordLength,
 };
