@@ -23,6 +23,11 @@ const createUser = async (req, resp) => {
     .json({ message: dataValidation.message });
 };
 
+const searchAllUsers = () => {
+
+};
+
 module.exports = {
   createUser,
+  searchAllUsers,
 };
