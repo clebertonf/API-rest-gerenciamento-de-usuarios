@@ -16,7 +16,10 @@ const validatePasswordLength = (password) => {
 
 const searchAllUsers = async () => {
   const users = await UserModel.searchAllUsersBank();
-  if (users.length >= 1) return users;
+  if (users.length >= 1) {
+    users.map((user) => delete user.password);
+    return users;
+  }
   return false;
 };
 
