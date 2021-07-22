@@ -14,8 +14,15 @@ const validatePasswordLength = (password) => {
   if (password.length < 6) return passwordLength;
 };
 
+const searchAllUsers = async () => {
+  const users = await UserModel.searchAllUsersBank();
+  if (users.length >= 1) return users;
+  return false;
+};
+
 module.exports = {
   validationEmptyFields,
   validatePasswordLength,
   existingEmailValidation,
+  searchAllUsers,
 };

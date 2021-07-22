@@ -17,7 +17,18 @@ const checkUserBankWithEmail = async (email) => {
   }
 };
 
+const searchAllUsersBank = async () => {
+  try {
+    const users = await connection().then((db) => db.collection('users').find().toArray());
+    users.map((user) => delete user.password);
+    return users;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   createUserBank,
   checkUserBankWithEmail,
+  searchAllUsersBank,
 };

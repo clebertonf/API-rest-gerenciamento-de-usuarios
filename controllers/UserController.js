@@ -23,8 +23,11 @@ const createUser = async (req, resp) => {
     .json({ message: dataValidation.message });
 };
 
-const searchAllUsers = () => {
+const searchAllUsers = async (_req, resp) => {
+  const users = await UserServices.searchAllUsers();
 
+  if (!users) return resp.status(404).json({ message: 'Nehum usuario encontrado!' });
+  return resp.status(200).json(users);
 };
 
 module.exports = {
