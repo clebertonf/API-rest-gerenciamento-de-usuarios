@@ -20,7 +20,7 @@ const erroDataBank = {
 
 const noUsersFound = {
   code: 404,
-  message: 'Nehum usuario encontrado!',
+  message: 'Nenhum usuario encontrado!',
 };
 
 module.exports = {
