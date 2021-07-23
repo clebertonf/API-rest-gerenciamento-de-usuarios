@@ -28,7 +28,7 @@ const searchAllUsersBank = async () => {
 
 const searchUserByIdBank = async (id) => {
   try {
-    return await connection().then((db) => db.collection('users').find({ _id: ObjectId(id) }).toArray());
+    return await connection().then((db) => (ObjectId(id) ? db.collection('users').find({ _id: ObjectId(id) }).toArray() : false));
   } catch (err) {
     console.log(err);
   }
