@@ -37,6 +37,8 @@ const searchUserById = async (id) => {
 const editUser = async (id, name, email) => {
   const userEdit = await UserModel.editUserBank(id, name, email);
   if (!userEdit) return erroDataBank;
+
+  delete userEdit.password;
   return userEdit;
 };
 

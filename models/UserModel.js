@@ -36,8 +36,11 @@ const searchUserByIdBank = async (id) => {
 
 const editUserBank = async (id, name, email) => {
   try {
-    return await connection().then((db) => (ObjectId(id) ? db.collection('uses')
-      .updateOne({ _id: ObjectId(id) }, { $set: name, email }) : false));
+    await connection().then((db) => (ObjectId(id) ? db.collection('users')
+      .updateOne({ _id: ObjectId(id) }, { $set: { name, email } }) : false));
+
+    const user = await searchUserByIdBank(id);
+    return user[0];
   } catch (err) {
     console.log(err);
   }

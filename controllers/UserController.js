@@ -39,14 +39,12 @@ const editUser = async (req, resp) => {
   const { name, email } = req.body;
   const { id } = req.params;
 
-  const dataValidation = await UserServices.existingEmailValidation(email);
+  const response = await UserServices.editUser(id, name, email);
 
-  if (!dataValidation) {
-    const response = await UserServices.editUser(id, name, email);
-  }
+  if (response.code) return resp.status(response.code).json({ message: response.message });
 
-  return resp.status(dataValidation.code)
-    .json({ message: dataValidation.message });
+  return resp.status(201)
+    .json(response);
 };
 
 module.exports = {
