@@ -28,7 +28,8 @@ const searchAllUsersBank = async () => {
 
 const searchUserByIdBank = async (id) => {
   try {
-    return await connection().then((db) => (ObjectId(id) ? db.collection('users').find({ _id: ObjectId(id) }).toArray() : false));
+    const user = await connection().then((db) => (ObjectId(id) ? db.collection('users').find({ _id: ObjectId(id) }).toArray() : false));
+    return user[0];
   } catch (err) {
     console.log(err);
   }
@@ -40,7 +41,7 @@ const editUserBank = async (id, name, email) => {
       .updateOne({ _id: ObjectId(id) }, { $set: { name, email } }) : false));
 
     const user = await searchUserByIdBank(id);
-    return user[0];
+    return user;
   } catch (err) {
     console.log(err);
   }

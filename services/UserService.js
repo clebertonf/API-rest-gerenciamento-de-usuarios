@@ -31,6 +31,8 @@ const existingEmailValidation = async (email) => {
 const searchUserById = async (id) => {
   const user = await UserModel.searchUserByIdBank(id);
   if (!user) return erroDataBank;
+
+  delete user.password;
   return user;
 };
 
