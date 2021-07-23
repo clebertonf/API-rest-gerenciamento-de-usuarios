@@ -19,7 +19,7 @@ const searchAllUsers = async () => {
     users.map((user) => delete user.password);
     return users;
   }
-  if (!users) return { code: 404, message: 'Nehum usuario encontrado!' };
+  return { code: 404, message: 'Nehum usuario encontrado!' };
 };
 
 const existingEmailValidation = async (email) => {
