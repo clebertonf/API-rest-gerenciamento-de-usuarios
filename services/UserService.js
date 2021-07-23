@@ -48,7 +48,8 @@ const editUser = async (id, name, email) => {
 
 const deleteUser = async (id) => {
   const userDelete = await UserModel.deleteUserBank(id);
-  if (userDelete === 0) return UserNotExists;
+  console.log(userDelete);
+  if (userDelete === 0 || !userDelete) return UserNotExists;
   return { code: 200, message: 'Usuario excluido com sucesso!' };
 };
 
