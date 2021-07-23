@@ -15,10 +15,24 @@ const createUser = async (name, email, password) => {
   return erroDataBank;
 };
 
-const authenticateUser = async (email, passwordBank, password) => {
-  const comparePassword = await bcrypt.compare(password, passwordBank);
+const searchUserByEmail = async (email) => {
+  const user = await UserModel.searchUserByEmailBank(email);
+  if (!user) return UserNotExists;
+
+  return user;
+};
+
+const authenticateUser = async (email, password) => {
+  const user = await searchUserByEmail(email);
+
+  if (user.code) return user;
+
+  const comparePassword = await bcrypt.compare(password, user.password);
 
   if (!comparePassword) return InvalidPassword;
+
+  delete user.password;
+  return user;
 };
 
 const searchAllUsers = async () => {
@@ -41,13 +55,6 @@ const searchUserById = async (id) => {
   if (!user) return UserNotExists;
 
   delete user.password;
-  return user;
-};
-
-const searchUserByEmail = async (email) => {
-  const user = await UserModel.searchUserByEmailBank(email);
-  if (!user) return UserNotExists;
-
   return user;
 };
 

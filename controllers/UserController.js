@@ -21,17 +21,17 @@ const createUser = async (req, resp) => {
 const authenticateUser = async (req, resp) => {
   const { email, password } = req.body;
 
-  const dataValidation = await UserServices.searchUserByEmail(email);
+  const dataValidation = await UserServices.authenticateUser(email, password);
 
-  if (dataValidation) {
-    const user = await UserServices.authenticateUser(email, dataValidation.password, password);
+  console.log(dataValidation);
 
-    return resp.status(user.code)
-      .json({ message: user.message });
+  if (dataValidation.code) {
+    return resp.status(dataValidation.code)
+      .json({ message: dataValidation.message });
   }
 
-  return resp.status(dataValidation.code)
-    .json({ message: dataValidation.message });
+  return resp.status(200)
+    .json(dataValidation);
 };
 
 const searchAllUsers = async (_req, resp) => {
