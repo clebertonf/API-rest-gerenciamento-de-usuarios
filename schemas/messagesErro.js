@@ -13,8 +13,20 @@ const emailExists = {
   message: 'Usuario ja cadastrado na base de dados!',
 };
 
+const erroDataBank = {
+  code: 500,
+  message: 'Aconteceu algo inesperado!',
+};
+
+const noUsersFound = {
+  code: 404,
+  message: 'Nehum usuario encontrado!',
+};
+
 module.exports = {
   emptyFields,
   passwordLength,
   emailExists,
+  erroDataBank,
+  noUsersFound,
 };

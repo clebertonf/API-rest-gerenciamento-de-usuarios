@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const UserModel = require('../models/UserModel');
-const { emailExists } = require('../schemas/messagesErro');
+const { emailExists, erroDataBank, noUsersFound } = require('../schemas/messagesErro');
 
 const createUser = async (name, email, password) => {
   const saltRounds = 10;
@@ -10,7 +10,7 @@ const createUser = async (name, email, password) => {
   const userCreate = await UserModel.createUserBank(name, email, hash);
 
   if (userCreate) return { code: 200, message: 'Usuario Criado com Sucesso!' };
-  return false;
+  return erroDataBank;
 };
 
 const searchAllUsers = async () => {
@@ -19,7 +19,7 @@ const searchAllUsers = async () => {
     users.map((user) => delete user.password);
     return users;
   }
-  return { code: 404, message: 'Nehum usuario encontrado!' };
+  return noUsersFound;
 };
 
 const existingEmailValidation = async (email) => {
