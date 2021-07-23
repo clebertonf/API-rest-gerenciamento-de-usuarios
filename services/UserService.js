@@ -3,6 +3,7 @@ const UserModel = require('../models/UserModel');
 const {
   emailExists, erroDataBank, noUsersFound, UserNotExists, InvalidPassword,
 } = require('../schemas/messagesErro');
+const token = require('../auth/createJWT');
 
 const createUser = async (name, email, password) => {
   const saltRounds = 10;
@@ -32,7 +33,12 @@ const authenticateUser = async (email, password) => {
   if (!comparePassword) return InvalidPassword;
 
   delete user.password;
-  return user;
+  const { _id } = user;
+
+  return {
+    user,
+    token: token.createJWT(_id),
+  };
 };
 
 const searchAllUsers = async () => {
