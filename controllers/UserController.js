@@ -26,7 +26,17 @@ const searchAllUsers = async (_req, resp) => {
   return resp.status(200).json(response);
 };
 
+const searchUserById = async (req, resp) => {
+  const { id } = req.params;
+
+  const response = await UserServices.searchUserById(id);
+  if (response.code) return resp.status(response.code).json({ message: response.message });
+
+  return resp.status(200).json(response);
+};
+
 module.exports = {
   createUser,
   searchAllUsers,
+  searchUserById,
 };

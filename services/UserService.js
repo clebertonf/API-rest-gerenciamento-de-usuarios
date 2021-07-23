@@ -28,8 +28,15 @@ const existingEmailValidation = async (email) => {
   if (userExists) return emailExists;
 };
 
+const searchUserById = async (id) => {
+  const user = await UserModel.searchUserByIdBank(id);
+  if (!user) return erroDataBank;
+  return user;
+};
+
 module.exports = {
   existingEmailValidation,
   searchAllUsers,
   createUser,
+  searchUserById,
 };

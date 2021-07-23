@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const connection = require('./connection');
 
 const createUserBank = async (name, email, password) => {
@@ -25,8 +26,17 @@ const searchAllUsersBank = async () => {
   }
 };
 
+const searchUserByIdBank = async (id) => {
+  try {
+    return await connection().then((db) => db.collection('users').find({ _id: ObjectId(id) }).toArray());
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   createUserBank,
   checkUserBankWithEmail,
   searchAllUsersBank,
+  searchUserByIdBank,
 };
