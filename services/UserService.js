@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const UserModel = require('../models/UserModel');
-const { emailExists, erroDataBank, noUsersFound } = require('../schemas/messagesErro');
+const {
+  emailExists, erroDataBank, noUsersFound, UserNotExists,
+} = require('../schemas/messagesErro');
 
 const createUser = async (name, email, password) => {
   const saltRounds = 10;
@@ -46,7 +48,8 @@ const editUser = async (id, name, email) => {
 
 const deleteUser = async (id) => {
   const userDelete = await UserModel.deleteUserBank(id);
-  if (userDelete === 0) return;
+  if (userDelete === 0) return UserNotExists;
+  return { code: 200, message: 'Usuario excluido com sucesso!' };
 };
 
 module.exports = {
