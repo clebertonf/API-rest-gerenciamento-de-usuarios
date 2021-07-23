@@ -44,10 +44,16 @@ const editUser = async (id, name, email) => {
   return userEdit;
 };
 
+const deleteUser = async (id) => {
+  const userDelete = await UserModel.deleteUserBank(id);
+  if (userDelete === 0) return;
+};
+
 module.exports = {
   existingEmailValidation,
   searchAllUsers,
   createUser,
   searchUserById,
   editUser,
+  deleteUser,
 };

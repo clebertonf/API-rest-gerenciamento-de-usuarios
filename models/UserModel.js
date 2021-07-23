@@ -47,9 +47,14 @@ const editUserBank = async (id, name, email) => {
   }
 };
 
-const deleteUserBank = async (id) {
-
-}
+const deleteUserBank = async (id) => {
+  try {
+    const userDelete = await connection().then((db) => db.collection('users').deleteOne({ _id: ObjectId(id) }));
+    return userDelete.deletedCount;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 module.exports = {
   createUserBank,
@@ -57,5 +62,5 @@ module.exports = {
   searchAllUsersBank,
   searchUserByIdBank,
   editUserBank,
-  deleteUserBank
+  deleteUserBank,
 };

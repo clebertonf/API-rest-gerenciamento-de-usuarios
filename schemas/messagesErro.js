@@ -28,6 +28,11 @@ const emailRegex = {
   message: 'Email formato invalido!',
 };
 
+const UserNotExists = {
+  code: 205,
+  message: 'Usuario não existe!',
+};
+
 module.exports = {
   emptyFields,
   passwordLength,
@@ -35,4 +40,5 @@ module.exports = {
   erroDataBank,
   noUsersFound,
   emailRegex,
+  UserNotExists,
 };

@@ -47,8 +47,14 @@ const editUser = async (req, resp) => {
     .json(response);
 };
 
-const deleteUser = (req, resp) => {
+const deleteUser = async (req, resp) => {
+  const { id } = req.params;
+  const response = await UserServices.deleteUser(id);
 
+  if (response.code) return resp.status(response.code).json({ message: response.message });
+
+  return resp.status(200)
+    .json(response);
 };
 
 module.exports = {
