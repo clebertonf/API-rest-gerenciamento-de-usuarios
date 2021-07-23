@@ -5,7 +5,7 @@ const createUser = async (req, resp) => {
   const { name, email, password } = req.body;
 
   const dataValidation = UserSchemas.validationEmptyFields(name, email, password)
-     || UserSchemas.validatePasswordLength(password)
+     || UserSchemas.validatePasswordLength(password) || UserSchemas.validateRegexEmail(email)
      || await UserServices.existingEmailValidation(email);
 
   if (!dataValidation) {

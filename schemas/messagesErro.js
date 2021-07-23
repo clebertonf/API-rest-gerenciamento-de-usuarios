@@ -23,10 +23,16 @@ const noUsersFound = {
   message: 'Nenhum usuario encontrado!',
 };
 
+const emailRegex = {
+  code: 205,
+  message: 'Email formato invalido!',
+};
+
 module.exports = {
   emptyFields,
   passwordLength,
   emailExists,
   erroDataBank,
   noUsersFound,
+  emailRegex,
 };
