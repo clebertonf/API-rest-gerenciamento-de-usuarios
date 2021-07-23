@@ -47,9 +47,14 @@ const editUser = async (req, resp) => {
     .json(response);
 };
 
+const deleteUser = (req, resp) => {
+
+};
+
 module.exports = {
   createUser,
   searchAllUsers,
   searchUserById,
   editUser,
+  deleteUser,
 };

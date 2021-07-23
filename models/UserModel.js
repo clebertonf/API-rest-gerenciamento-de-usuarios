@@ -47,10 +47,15 @@ const editUserBank = async (id, name, email) => {
   }
 };
 
+const deleteUserBank = async (id) {
+
+}
+
 module.exports = {
   createUserBank,
   checkUserBankWithEmail,
   searchAllUsersBank,
   searchUserByIdBank,
   editUserBank,
+  deleteUserBank
 };
