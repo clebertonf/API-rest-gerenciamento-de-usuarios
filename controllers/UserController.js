@@ -1,22 +1,17 @@
-const bcrypt = require('bcrypt');
+const UserSchemas = require('../schemas/UserSchemas');
 const UserServices = require('../services/UserService');
-const UserModel = require('../models/UserModel');
 
 const createUser = async (req, resp) => {
   const { name, email, password } = req.body;
 
-  const dataValidation = UserServices.validationEmptyFields(name, email, password)
-     || UserServices.validatePasswordLength(password)
+  const dataValidation = UserSchemas.validationEmptyFields(name, email, password)
+     || UserSchemas.validatePasswordLength(password)
      || await UserServices.existingEmailValidation(email);
 
   if (!dataValidation) {
-    const saltRounds = 10;
+    const response = await UserServices.createUser(name, email, password);
 
-    const hash = await bcrypt.hash(password, saltRounds);
-
-    const userCreate = await UserModel.createUserBank(name, email, hash);
-
-    if (userCreate) return resp.status(200).json({ message: 'Usuario Criado Com Sucesso!' });
+    if (response.code) return resp.status(response.code).json({ message: response.message });
   }
 
   return resp.status(dataValidation.code)
@@ -24,10 +19,11 @@ const createUser = async (req, resp) => {
 };
 
 const searchAllUsers = async (_req, resp) => {
-  const users = await UserServices.searchAllUsers();
+  const response = await UserServices.searchAllUsers();
 
-  if (!users) return resp.status(404).json({ message: 'Nehum usuario encontrado!' });
-  return resp.status(200).json(users);
+  if (response.code) return resp.status(response.code).json({ message: response.message });
+
+  return resp.status(200).json(response);
 };
 
 module.exports = {
