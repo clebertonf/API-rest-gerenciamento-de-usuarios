@@ -11,7 +11,10 @@ const createUser = async (req, resp) => {
   if (!dataValidation) {
     const response = await UserServices.createUser(name, email, password);
 
-    if (response.code) return resp.status(response.code).json({ message: response.message });
+    if (response.code) {
+      return resp.status(response.code)
+        .json({ message: response.message, token: response.token });
+    }
   }
 
   return resp.status(dataValidation.code)

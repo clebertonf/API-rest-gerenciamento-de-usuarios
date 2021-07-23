@@ -5,22 +5,25 @@ const {
 } = require('../schemas/messagesErro');
 const token = require('../auth/createJWT');
 
+const searchUserByEmail = async (email) => {
+  const user = await UserModel.searchUserByEmailBank(email);
+  if (!user) return UserNotExists;
+
+  return user;
+};
+
 const createUser = async (name, email, password) => {
   const saltRounds = 10;
 
   const hash = await bcrypt.hash(password, saltRounds);
 
   const userCreate = await UserModel.createUserBank(name, email, hash);
+  const user = await searchUserByEmail(email);
+  delete user.password;
+  const { id } = user;
 
-  if (userCreate) return { code: 200, message: 'Usuario Criado com Sucesso!' };
+  if (userCreate) return { code: 200, message: 'Usuario Criado com Sucesso!', token: token.createJWT(id) };
   return erroDataBank;
-};
-
-const searchUserByEmail = async (email) => {
-  const user = await UserModel.searchUserByEmailBank(email);
-  if (!user) return UserNotExists;
-
-  return user;
 };
 
 const authenticateUser = async (email, password) => {
