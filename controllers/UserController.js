@@ -24,7 +24,10 @@ const authenticateUser = async (req, resp) => {
   const dataValidation = await UserServices.searchUserByEmail(email);
 
   if (dataValidation) {
-    return;
+    const user = await UserServices.authenticateUser(email, dataValidation.password, password);
+
+    return resp.status(user.code)
+      .json({ message: user.message });
   }
 
   return resp.status(dataValidation.code)

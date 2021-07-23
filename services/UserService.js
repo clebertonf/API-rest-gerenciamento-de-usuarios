@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const UserModel = require('../models/UserModel');
 const {
-  emailExists, erroDataBank, noUsersFound, UserNotExists,
+  emailExists, erroDataBank, noUsersFound, UserNotExists, InvalidPassword,
 } = require('../schemas/messagesErro');
 
 const createUser = async (name, email, password) => {
@@ -13,6 +13,12 @@ const createUser = async (name, email, password) => {
 
   if (userCreate) return { code: 200, message: 'Usuario Criado com Sucesso!' };
   return erroDataBank;
+};
+
+const authenticateUser = async (email, passwordBank, password) => {
+  const comparePassword = await bcrypt.compare(password, passwordBank);
+
+  if (!comparePassword) return InvalidPassword;
 };
 
 const searchAllUsers = async () => {
@@ -67,4 +73,5 @@ module.exports = {
   editUser,
   deleteUser,
   searchUserByEmail,
+  authenticateUser,
 };

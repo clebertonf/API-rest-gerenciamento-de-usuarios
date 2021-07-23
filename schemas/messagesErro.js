@@ -33,6 +33,10 @@ const UserNotExists = {
   message: 'Usuario não existe!',
 };
 
+const InvalidPassword = {
+  code: 205,
+  message: 'Senha invalida!',
+};
 module.exports = {
   emptyFields,
   passwordLength,
@@ -41,4 +45,5 @@ module.exports = {
   noUsersFound,
   emailRegex,
   UserNotExists,
+  InvalidPassword,
 };
