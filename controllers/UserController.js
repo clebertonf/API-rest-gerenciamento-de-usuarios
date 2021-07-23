@@ -18,6 +18,19 @@ const createUser = async (req, resp) => {
     .json({ message: dataValidation.message });
 };
 
+const authenticateUser = async (req, resp) => {
+  const { email, password } = req.body;
+
+  const dataValidation = await UserServices.searchUserByEmail(email);
+
+  if (dataValidation) {
+    return;
+  }
+
+  return resp.status(dataValidation.code)
+    .json({ message: dataValidation.message });
+};
+
 const searchAllUsers = async (_req, resp) => {
   const response = await UserServices.searchAllUsers();
 
@@ -63,4 +76,5 @@ module.exports = {
   searchUserById,
   editUser,
   deleteUser,
+  authenticateUser,
 };

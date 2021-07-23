@@ -38,6 +38,13 @@ const searchUserById = async (id) => {
   return user;
 };
 
+const searchUserByEmail = async (email) => {
+  const user = await UserModel.searchUserByEmailBank(email);
+  if (!user) return UserNotExists;
+
+  return user;
+};
+
 const editUser = async (id, name, email) => {
   const userEdit = await UserModel.editUserBank(id, name, email);
   if (!userEdit) return UserNotExists;
@@ -59,4 +66,5 @@ module.exports = {
   searchUserById,
   editUser,
   deleteUser,
+  searchUserByEmail,
 };

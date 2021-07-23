@@ -37,6 +37,15 @@ const searchUserByIdBank = async (id) => {
   }
 };
 
+const searchUserByEmailBank = async (email) => {
+  try {
+    const user = await connection().then((db) => db.collection('users').find({ email }).toArray());
+    return user[0];
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const editUserBank = async (id, name, email) => {
   try {
     await connection().then((db) => (ObjectId(id) ? db.collection('users')
@@ -65,4 +74,5 @@ module.exports = {
   searchUserByIdBank,
   editUserBank,
   deleteUserBank,
+  searchUserByEmailBank,
 };
