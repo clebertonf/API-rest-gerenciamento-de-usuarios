@@ -35,8 +35,23 @@ const searchUserById = async (req, resp) => {
   return resp.status(200).json(response);
 };
 
+const editUser = async (req, resp) => {
+  const { name, email } = req.body;
+  const { id } = req.params;
+
+  const dataValidation = await UserServices.existingEmailValidation(email);
+
+  if (!dataValidation) {
+    const response = await UserServices.editUser(id, name, email);
+  }
+
+  return resp.status(dataValidation.code)
+    .json({ message: dataValidation.message });
+};
+
 module.exports = {
   createUser,
   searchAllUsers,
   searchUserById,
+  editUser,
 };

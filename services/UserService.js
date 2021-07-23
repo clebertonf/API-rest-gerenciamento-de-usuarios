@@ -34,9 +34,16 @@ const searchUserById = async (id) => {
   return user;
 };
 
+const editUser = async (id, name, email) => {
+  const userEdit = await UserModel.editUserBank(id, name, email);
+  if (!userEdit) return erroDataBank;
+  return userEdit;
+};
+
 module.exports = {
   existingEmailValidation,
   searchAllUsers,
   createUser,
   searchUserById,
+  editUser,
 };

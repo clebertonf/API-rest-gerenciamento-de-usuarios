@@ -34,9 +34,19 @@ const searchUserByIdBank = async (id) => {
   }
 };
 
+const editUserBank = async (id, name, email) => {
+  try {
+    return await connection().then((db) => (ObjectId(id) ? db.collection('uses')
+      .updateOne({ _id: ObjectId(id) }, { $set: name, email }) : false));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   createUserBank,
   checkUserBankWithEmail,
   searchAllUsersBank,
   searchUserByIdBank,
+  editUserBank,
 };
