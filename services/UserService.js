@@ -32,7 +32,7 @@ const existingEmailValidation = async (email) => {
 
 const searchUserById = async (id) => {
   const user = await UserModel.searchUserByIdBank(id);
-  if (!user) return erroDataBank;
+  if (!user) return UserNotExists;
 
   delete user.password;
   return user;
@@ -40,7 +40,7 @@ const searchUserById = async (id) => {
 
 const editUser = async (id, name, email) => {
   const userEdit = await UserModel.editUserBank(id, name, email);
-  if (!userEdit) return erroDataBank;
+  if (!userEdit) return UserNotExists;
 
   delete userEdit.password;
   return userEdit;
