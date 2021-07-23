@@ -15,6 +15,7 @@ const createUser = async (name, email, password) => {
 
 const searchAllUsers = async () => {
   const users = await UserModel.searchAllUsersBank();
+  if (!users) return erroDataBank;
   if (users.length >= 1) {
     users.map((user) => delete user.password);
     return users;
