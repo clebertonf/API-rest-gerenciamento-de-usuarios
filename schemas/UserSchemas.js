@@ -1,3 +1,4 @@
+// Referência regex: https://regexr.com/3e48o
 const { emptyFields, passwordLength, emailRegex } = require('./messagesErro');
 
 const validationEmptyFields = (name, email, password) => {
