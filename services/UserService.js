@@ -20,9 +20,9 @@ const createUser = async (name, email, password) => {
   const userCreate = await UserModel.createUserBank(name, email, hash);
   const user = await searchUserByEmail(email);
   delete user.password;
-  const { id } = user;
+  const { _id } = user;
 
-  if (userCreate) return { code: 200, message: 'Usuario Criado com Sucesso!', token: token.createJWT(id) };
+  if (userCreate) return { code: 200, message: 'Usuario Criado com Sucesso!', token: token.createJWT(_id, name, email) };
   return erroDataBank;
 };
 
@@ -36,11 +36,11 @@ const authenticateUser = async (email, password) => {
   if (!comparePassword) return InvalidPassword;
 
   delete user.password;
-  const { _id } = user;
+  const { _id, name } = user;
 
   return {
     user,
-    token: token.createJWT(_id),
+    token: token.createJWT(_id, name, email),
   };
 };
 

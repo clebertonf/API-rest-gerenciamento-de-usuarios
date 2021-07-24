@@ -26,8 +26,6 @@ const authenticateUser = async (req, resp) => {
 
   const dataValidation = await UserServices.authenticateUser(email, password);
 
-  console.log(dataValidation);
-
   if (dataValidation.code) {
     return resp.status(dataValidation.code)
       .json({ message: dataValidation.message });
@@ -37,7 +35,7 @@ const authenticateUser = async (req, resp) => {
     .json(dataValidation);
 };
 
-const searchAllUsers = async (_req, resp) => {
+const searchAllUsers = async (req, resp) => {
   const response = await UserServices.searchAllUsers();
 
   if (response.code) return resp.status(response.code).json({ message: response.message });

@@ -6,9 +6,9 @@ const jwtConfig = {
   algorithm: 'HS256',
 };
 
-const createJWT = (id) => {
+const createJWT = (id, name, email) => {
   try {
-    const token = jwt.sign({ data: { id } }, process.env.JWT_SECRET, jwtConfig);
+    const token = jwt.sign({ data: { id, name, email } }, process.env.JWT_SECRET, jwtConfig);
     return token;
   } catch (error) {
     console.log(error);
