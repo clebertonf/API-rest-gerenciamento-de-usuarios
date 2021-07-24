@@ -35,6 +35,18 @@ const authenticateUser = async (req, resp) => {
     .json(dataValidation);
 };
 
+const forgotPassword = async (req, resp) => {
+  const { email } req.body;
+
+  const response = await UserServices.searchUserByEmail(email);
+
+  if (dataValidation.code) {
+    return resp.status(dataValidation.code)
+      .json({ message: dataValidation.message });
+  }
+
+};
+
 const searchAllUsers = async (req, resp) => {
   const response = await UserServices.searchAllUsers();
 
@@ -81,4 +93,5 @@ module.exports = {
   editUser,
   deleteUser,
   authenticateUser,
+  forgotPassword,
 };

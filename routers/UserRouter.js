@@ -4,6 +4,7 @@ const authenticate = require('../middlewares/authMiddleware');
 
 router.post('/register', UserController.createUser);
 router.post('/authenticate', UserController.authenticateUser);
+router.post('/forgot_password', UserController.forgotPassword);
 
 router.get('/', authenticate, UserController.searchAllUsers);
 router.get('/:id', authenticate, UserController.searchUserById);
