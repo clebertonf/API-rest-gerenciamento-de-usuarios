@@ -1,4 +1,6 @@
 const nodemailer = require('nodemailer');
+const hbs = require('nodemailer-express-handlebars');
+const path = require('path');
 require('dotenv').config();
 
 const {
@@ -13,5 +15,11 @@ const transport = nodemailer.createTransport({
     pass: PASS,
   },
 });
+
+transport.use('compile', hbs({
+  viewEngine: 'handlebars',
+  viewPath: path.resolve('./resources/mail/'),
+  extName: '.html',
+}));
 
 module.exports = transport;
