@@ -47,22 +47,32 @@ const authenticateUser = async (email, password) => {
 };
 
 const forgotPassword = async (id, email) => {
-  const randonToken = crypto.randomBytes(20).toString('hex');
-  const now = new Date();
+  try {
+    const randonToken = crypto.randomBytes(20).toString('hex');
+    const now = new Date();
 
-  now.setHours(now.getHours() + 1);
+    now.setHours(now.getHours() + 1);
 
-  await UserModel.editResetToken(id, randonToken, now);
+    await UserModel.editResetToken(id, randonToken, now);
 
-  mailer.sendMail({
-    to: email,
-    from: 'clebertonfgc@gmail.com',
-    subject: 'Redefinição de Senha',
-    html: `<h3>Seu token para redefinir a senha esta aqui esta aqui <h3/> ${randonToken}`,
+    mailer.sendMail({
+      to: email,
+      from: 'clebertonfgc@gmail.com',
+      subject: 'Redefinição de Senha',
+      html: `<h3>Seu token para redefinir a senha esta aqui esta aqui <h3/> ${randonToken}`,
 
-  }, (err) => ({ code: 400, message: `Erro ao enviar o email, tente novamente!${err}` }));
+    }, (err) => {
+      if (err) return { code: 400, message: `Erro ao enviar o email, tente novamente!${err}` };
+    });
 
-  return { code: 200, message: 'Email redefinição de senha enviado com sucesso!' };
+    return { code: 200, message: 'Email redefinição de senha enviado com sucesso!' };
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const editPassword = () => {
+
 };
 
 const searchAllUsers = async () => {

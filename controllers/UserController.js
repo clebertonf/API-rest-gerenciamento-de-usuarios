@@ -50,6 +50,29 @@ const forgotPassword = async (req, resp) => {
     .json({ message: forgotResponse.message });
 };
 
+const resetPassword = async (req, resp) => {
+  const {
+    email, password, token,
+  } = req.body;
+
+  const response = await UserServices.searchUserByEmail(email);
+
+  if (response.code) {
+    return resp.status(response.code)
+      .json({ message: response.message });
+  }
+
+  const { passwordResetToken, passwordResetExpires } = response;
+
+  const validToken = UserSchemas.validToken(token, passwordResetToken)
+   || UserSchemas.validExpiresToken(passwordResetExpires);
+
+  if (validToken.code) {
+    return resp.status(validToken.code)
+      .json({ message: validToken.message });
+  }
+};
+
 const searchAllUsers = async (req, resp) => {
   const response = await UserServices.searchAllUsers();
 
@@ -97,4 +120,5 @@ module.exports = {
   deleteUser,
   authenticateUser,
   forgotPassword,
+  resetPassword,
 };

@@ -1,5 +1,7 @@
 // Referência regex: https://regexr.com/3e48o
-const { emptyFields, passwordLength, emailRegex } = require('./messagesErro');
+const {
+  emptyFields, passwordLength, emailRegex, InvalidToken, ExpiresToken,
+} = require('./messagesErro');
 
 const validationEmptyFields = (name, email, password) => {
   if (!name || !email || !password) return emptyFields;
@@ -14,8 +16,17 @@ const validateRegexEmail = (email) => {
   if (!regex.test(email)) return emailRegex;
 };
 
+const validToken = (tokenUser, token) => {
+  if (token !== tokenUser) return InvalidToken;
+};
+
+const validExpiresToken = (passwordResetExpires) => {
+  if (new Date() > passwordResetExpires) return ExpiresToken;
+};
 module.exports = {
   validationEmptyFields,
   validatePasswordLength,
   validateRegexEmail,
+  validToken,
+  validExpiresToken,
 };

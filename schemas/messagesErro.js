@@ -37,6 +37,17 @@ const InvalidPassword = {
   code: 205,
   message: 'Senha invalida!',
 };
+
+const InvalidToken = {
+  code: 205,
+  message: 'Token invalido!',
+};
+
+const ExpiresToken = {
+  code: 205,
+  message: 'Token expirado!',
+};
+
 module.exports = {
   emptyFields,
   passwordLength,
@@ -46,4 +57,6 @@ module.exports = {
   emailRegex,
   UserNotExists,
   InvalidPassword,
+  InvalidToken,
+  ExpiresToken,
 };
