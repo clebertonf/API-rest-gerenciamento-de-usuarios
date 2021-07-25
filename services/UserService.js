@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const UserModel = require('../models/UserModel');
+const mailer = require('../modules/mailer');
 const {
   emailExists, erroDataBank, noUsersFound, UserNotExists, InvalidPassword,
 } = require('../schemas/messagesErro');
@@ -45,14 +46,21 @@ const authenticateUser = async (email, password) => {
   };
 };
 
-const forgotPassword = async (id) => {
+const forgotPassword = async (id, email) => {
   const randonToken = crypto.randomBytes(20).toString('hex');
   const now = new Date();
 
   now.setHours(now.getHours() + 1);
 
   await UserModel.editResetToken(id, randonToken, now);
-  return { code: 200, message: 'Token redefinição de senha criado com sucesso!' };
+
+  mailer.sendMail({
+    to: email,
+    from: 'clebertonfgc@gmail.com',
+    template: 'mail/forgot_password',
+    context: { randonToken },
+  }, (err) => console.log(err));
+  return { code: 200, message: 'Email redefinição de senha enviado com sucesso!' };
 };
 
 const searchAllUsers = async () => {

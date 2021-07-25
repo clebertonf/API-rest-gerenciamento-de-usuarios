@@ -45,7 +45,7 @@ const forgotPassword = async (req, resp) => {
       .json({ message: response.message });
   }
 
-  const forgotResponse = await UserServices.forgotPassword(response._id);
+  const forgotResponse = await UserServices.forgotPassword(response._id, email);
   return resp.status(forgotResponse.code)
     .json({ message: forgotResponse.message });
 };
