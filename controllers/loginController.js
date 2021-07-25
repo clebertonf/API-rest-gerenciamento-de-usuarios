@@ -1,15 +1,15 @@
-const UserSchemas = require('../schemas/UserSchemas');
-const UserServices = require('../services/UserService');
+const LoginSchemas = require('../schemas/LoginSchemas');
+const LoginServices = require('../services/LoginServices');
 
 const createUser = async (req, resp) => {
   const { name, email, password } = req.body;
 
-  const dataValidation = UserSchemas.validationEmptyFields(name, email, password)
-       || UserSchemas.validatePasswordLength(password) || UserSchemas.validateRegexEmail(email)
-       || await UserServices.existingEmailValidation(email);
+  const dataValidation = LoginSchemas.validationEmptyFields(name, email, password)
+       || LoginSchemas.validatePasswordLength(password) || LoginSchemas.validateRegexEmail(email)
+       || await LoginServices.existingEmailValidation(email);
 
   if (!dataValidation) {
-    const response = await UserServices.createUser(name, email, password);
+    const response = await LoginServices.createUser(name, email, password);
 
     if (response.code) {
       return resp.status(response.code)
@@ -24,7 +24,7 @@ const createUser = async (req, resp) => {
 const authenticateUser = async (req, resp) => {
   const { email, password } = req.body;
 
-  const dataValidation = await UserServices.authenticateUser(email, password);
+  const dataValidation = await LoginServices.authenticateUser(email, password);
 
   if (dataValidation.code) {
     return resp.status(dataValidation.code)
@@ -38,14 +38,14 @@ const authenticateUser = async (req, resp) => {
 const forgotPassword = async (req, resp) => {
   const { email } = req.body;
 
-  const response = await UserServices.searchUserByEmail(email);
+  const response = await LoginServices.searchUserByEmail(email);
 
   if (response.code) {
     return resp.status(response.code)
       .json({ message: response.message });
   }
 
-  const forgotResponse = await UserServices.forgotPassword(response._id, email);
+  const forgotResponse = await LoginServices.forgotPassword(response._id, email);
   return resp.status(forgotResponse.code)
     .json({ message: forgotResponse.message });
 };
@@ -55,7 +55,7 @@ const resetPassword = async (req, resp) => {
     email, password, token,
   } = req.body;
 
-  const response = await UserServices.searchUserByEmail(email);
+  const response = await LoginServices.searchUserByEmail(email);
 
   if (response.code) {
     return resp.status(response.code)
@@ -64,11 +64,11 @@ const resetPassword = async (req, resp) => {
 
   const { passwordResetToken, passwordResetExpires } = response;
 
-  const validToken = UserSchemas.validToken(token, passwordResetToken)
-     || UserSchemas.validExpiresToken(passwordResetExpires);
+  const validToken = LoginSchemas.validToken(token, passwordResetToken)
+     || LoginSchemas.validExpiresToken(passwordResetExpires);
 
   if (!validToken) {
-    const editPessword = await UserServices.editPassword(email, password);
+    const editPessword = await LoginServices.editPassword(email, password);
     return resp.status(200)
       .json(editPessword);
   }

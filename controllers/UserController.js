@@ -1,4 +1,4 @@
-const UserSchemas = require('../schemas/UserSchemas');
+const UserSchemas = require('../schemas/LoginSchemas');
 const UserServices = require('../services/UserService');
 
 const searchAllUsers = async (req, resp) => {

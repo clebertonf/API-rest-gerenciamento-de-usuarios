@@ -71,52 +71,6 @@ const forgotPassword = async (id, email) => {
   }
 };
 
-const editPassword = async (email, password) => {
-  const saltRounds = 10;
-
-  const hash = await bcrypt.hash(password, saltRounds);
-  const editUser = await UserModel.editPassword(email, hash);
-
-  return editUser;
-};
-
-const searchAllUsers = async () => {
-  const users = await UserModel.searchAllUsersBank();
-  if (!users) return erroDataBank;
-  if (users.length >= 1) {
-    users.map((user) => delete user.password);
-    return users;
-  }
-  return noUsersFound;
-};
-
-const existingEmailValidation = async (email) => {
-  const userExists = await UserModel.checkUserBankWithEmail(email);
-  if (userExists) return emailExists;
-};
-
-const searchUserById = async (id) => {
-  const user = await UserModel.searchUserByIdBank(id);
-  if (!user) return UserNotExists;
-
-  delete user.password;
-  return user;
-};
-
-const editUser = async (id, name, email) => {
-  const userEdit = await UserModel.editUserBank(id, name, email);
-  if (!userEdit) return UserNotExists;
-
-  delete userEdit.password;
-  return userEdit;
-};
-
-const deleteUser = async (id) => {
-  const userDelete = await UserModel.deleteUserBank(id);
-  if (userDelete === 0 || !userDelete) return UserNotExists;
-  return { code: 200, message: 'Usuario excluido com sucesso!' };
-};
-
 module.exports = {
   existingEmailValidation,
   searchAllUsers,
