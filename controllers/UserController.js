@@ -45,8 +45,9 @@ const forgotPassword = async (req, resp) => {
       .json({ message: response.message });
   }
 
-  await UserServices.forgotPassword(response._id);
-  return resp.status(200).json({ message: 'Token redefinição gerado com sucesso!' });
+  const forgotResponse = await UserServices.forgotPassword(response._id);
+  return resp.status(forgotResponse.code)
+    .json({ message: forgotResponse.message });
 };
 
 const searchAllUsers = async (req, resp) => {

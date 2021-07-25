@@ -52,7 +52,7 @@ const forgotPassword = async (id) => {
   now.setHours(now.getHours() + 1);
 
   await UserModel.editResetToken(id, randonToken, now);
-  return true;
+  return { code: 200, message: 'Token redefinição de senha criado com sucesso!' };
 };
 
 const searchAllUsers = async () => {
