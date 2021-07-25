@@ -4,21 +4,11 @@ const LoginServices = require('../services/LoginServices');
 const createUser = async (req, resp) => {
   const { name, email, password } = req.body;
 
-  const dataValidation = LoginSchemas.validationEmptyFields(name, email, password)
-       || LoginSchemas.validatePasswordLength(password) || LoginSchemas.validateRegexEmail(email)
-       || await LoginServices.existingEmailValidation(email);
-
-  if (!dataValidation) {
-    const response = await LoginServices.createUser(name, email, password);
-
-    if (response.code) {
-      return resp.status(response.code)
-        .json({ message: response.message, token: response.token });
-    }
+  const response = await LoginServices.createUser(name, email, password);
+  if (response.code) {
+    return resp.status(response.code)
+      .json({ message: response.message });
   }
-
-  return resp.status(dataValidation.code)
-    .json({ message: dataValidation.message });
 };
 
 const authenticateUser = async (req, resp) => {

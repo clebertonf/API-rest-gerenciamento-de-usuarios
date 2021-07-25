@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const LoginModel = require('../models/LoginModel');
 const mailer = require('../modules/mailer');
 const {
-  emailExists, erroDataBank, UserNotExists, InvalidPassword,
+  emailExists, UserNotExists, InvalidPassword,
 } = require('../schemas/messagesErro');
 const token = require('../auth/createJWT');
 
@@ -15,17 +15,21 @@ const searchUserByEmail = async (email) => {
 };
 
 const createUser = async (name, email, password) => {
-  const saltRounds = 10;
+  const user = await LoginModel.searchUserByEmailBank(email);
+  if (!user) {
+    const saltRounds = 10;
 
-  const hash = await bcrypt.hash(password, saltRounds);
+    const hash = await bcrypt.hash(password, saltRounds);
 
-  const userCreate = await LoginModel.createUserBank(name, email, hash);
-  const user = await searchUserByEmail(email);
-  delete user.password;
-  const { _id } = user;
+    const userCreate = await LoginModel.createUserBank(name, email, hash);
+    const user = await searchUserByEmail(email);
+    delete user.password;
+    const { _id } = user;
 
-  if (userCreate) return { code: 200, message: 'Usuario Criado com Sucesso!', token: token.createJWT(_id, name, email) };
-  return erroDataBank;
+    if (userCreate) return { code: 200, message: 'Usuario Criado com Sucesso!', token: token.createJWT(_id, name, email) };
+  }
+
+  return emailExists;
 };
 
 const authenticateUser = async (email, password) => {
