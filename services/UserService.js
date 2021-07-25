@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 const UserModel = require('../models/UserModel');
 const {
   emailExists, erroDataBank, noUsersFound, UserNotExists, InvalidPassword,
@@ -42,6 +43,16 @@ const authenticateUser = async (email, password) => {
     user,
     token: token.createJWT(_id, name, email),
   };
+};
+
+const forgotPassword = async (id) => {
+  const randonToken = crypto.randomBytes(20).toString('hex');
+  const now = new Date();
+
+  const expirationOneHour = now.setHours(now.getHours() + 1);
+
+  await UserModel.editResetToken(id, randonToken, expirationOneHour);
+  return true;
 };
 
 const searchAllUsers = async () => {
@@ -90,4 +101,5 @@ module.exports = {
   deleteUser,
   searchUserByEmail,
   authenticateUser,
+  forgotPassword,
 };

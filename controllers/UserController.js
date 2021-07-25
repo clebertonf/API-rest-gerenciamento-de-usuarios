@@ -36,15 +36,17 @@ const authenticateUser = async (req, resp) => {
 };
 
 const forgotPassword = async (req, resp) => {
-  const { email } req.body;
+  const { email } = req.body;
 
   const response = await UserServices.searchUserByEmail(email);
 
-  if (dataValidation.code) {
-    return resp.status(dataValidation.code)
-      .json({ message: dataValidation.message });
+  if (response.code) {
+    return resp.status(response.code)
+      .json({ message: response.message });
   }
 
+  await UserServices.forgotPassword(response._id);
+  return resp.status(200).json({ message: 'Token redefinição gerado com sucesso!' });
 };
 
 const searchAllUsers = async (req, resp) => {

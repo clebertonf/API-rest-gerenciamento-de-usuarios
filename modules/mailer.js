@@ -4,12 +4,12 @@ const path = require('path');
 require('dotenv').config();
 
 const {
-  HOST, PORT, USER, PASS,
+  HOST, PORT_MAIL, USER, PASS,
 } = process.env;
 
 const transport = nodemailer.createTransport({
   host: HOST,
-  port: PORT,
+  port: PORT_MAIL,
   auth: {
     user: USER,
     pass: PASS,

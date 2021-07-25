@@ -2,9 +2,12 @@ const { ObjectId } = require('mongodb');
 const connection = require('./connection');
 
 const createUserBank = async (name, email, password) => {
+  const passwordResetToken = '';
+  const passwordResetExpires = '';
+  const role = 'user';
   try {
     const userCreate = await connection().then((db) => db.collection('users').insertOne({
-      name, email, password, createdAt: new Date(),
+      name, email, password, passwordResetToken, passwordResetExpires, role, createdAt: new Date(),
     }));
     return userCreate.acknowledged;
   } catch (err) {
@@ -58,6 +61,19 @@ const editUserBank = async (id, name, email) => {
   }
 };
 
+const editResetToken = async (id, passwordResetToken, passwordResetExpires) => {
+  try {
+    await connection().then((db) => (ObjectId(id) ? db.collection('users')
+      .updateOne({ _id: ObjectId(id) },
+        { $set: { passwordResetToken, passwordResetExpires } }) : false));
+
+    const user = await searchUserByIdBank(id);
+    return user;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const deleteUserBank = async (id) => {
   try {
     const userDelete = await connection().then((db) => db.collection('users').deleteOne({ _id: ObjectId(id) }));
@@ -75,4 +91,5 @@ module.exports = {
   editUserBank,
   deleteUserBank,
   searchUserByEmailBank,
+  editResetToken,
 };
