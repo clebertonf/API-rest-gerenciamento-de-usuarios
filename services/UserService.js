@@ -72,14 +72,7 @@ const forgotPassword = async (id, email) => {
 };
 
 module.exports = {
-  existingEmailValidation,
-  searchAllUsers,
-  createUser,
-  searchUserById,
-  editUser,
-  deleteUser,
   searchUserByEmail,
   authenticateUser,
   forgotPassword,
-  editPassword,
 };

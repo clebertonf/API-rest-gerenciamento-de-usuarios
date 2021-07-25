@@ -60,9 +60,6 @@ const forgotPassword = async (id, email) => {
       from: 'clebertonfgc@gmail.com',
       subject: 'Redefinição de Senha',
       html: `<h3>Seu token para redefinir a senha esta aqui esta aqui <h3/> ${randonToken}`,
-
-    }, (err) => {
-      if (err) return { code: 400, message: `Erro ao enviar o email, tente novamente!${err}` };
     });
 
     return { code: 200, message: 'Email redefinição de senha enviado com sucesso!' };
