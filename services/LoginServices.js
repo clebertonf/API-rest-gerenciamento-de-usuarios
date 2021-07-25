@@ -22,9 +22,9 @@ const createUser = async (name, email, password) => {
     const hash = await bcrypt.hash(password, saltRounds);
 
     const userCreate = await LoginModel.createUserBank(name, email, hash);
-    const user = await searchUserByEmail(email);
-    delete user.password;
-    const { _id } = user;
+    const userBank = await searchUserByEmail(email);
+    delete userBank.password;
+    const { _id } = userBank;
 
     if (userCreate) return { code: 200, message: 'Usuario Criado com Sucesso!', token: token.createJWT(_id, name, email) };
   }

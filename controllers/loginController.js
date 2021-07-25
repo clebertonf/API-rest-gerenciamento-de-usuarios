@@ -62,10 +62,9 @@ const resetPassword = async (req, resp) => {
     return resp.status(200)
       .json(editPessword);
   }
-  if (validToken.code) {
-    return resp.status(validToken.code)
-      .json({ message: validToken.message });
-  }
+
+  return resp.status(validToken.code)
+    .json({ message: validToken.message });
 };
 
 module.exports = {
