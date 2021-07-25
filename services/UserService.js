@@ -71,8 +71,13 @@ const forgotPassword = async (id, email) => {
   }
 };
 
-const editPassword = () => {
+const editPassword = async (email, password) => {
+  const saltRounds = 10;
 
+  const hash = await bcrypt.hash(password, saltRounds);
+  const editUser = await UserModel.editPassword(email, hash);
+
+  return editUser;
 };
 
 const searchAllUsers = async () => {
@@ -122,4 +127,5 @@ module.exports = {
   searchUserByEmail,
   authenticateUser,
   forgotPassword,
+  editPassword,
 };

@@ -67,6 +67,11 @@ const resetPassword = async (req, resp) => {
   const validToken = UserSchemas.validToken(token, passwordResetToken)
    || UserSchemas.validExpiresToken(passwordResetExpires);
 
+  if (!validToken) {
+    const editPessword = await UserServices.editPassword(email, password);
+    return resp.status(200)
+      .json(editPessword);
+  }
   if (validToken.code) {
     return resp.status(validToken.code)
       .json({ message: validToken.message });

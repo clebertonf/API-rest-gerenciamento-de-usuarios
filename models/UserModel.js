@@ -80,13 +80,16 @@ const editResetToken = async (id, passwordResetToken, passwordResetExpires) => {
   }
 };
 
-const editPassword = async () => {
+const editPassword = async (email, password) => {
   try {
-    await connection().then((db) => (ObjectId(id) ? db.collection('users')
-      .updateOne({ _id: ObjectId(id) },
-        { $set: { passwordResetToken, passwordResetExpires } }) : false));
+    await connection().then((db) => (db.collection('users')
+      .updateOne({ email },
+        { $set: { password } })));
 
-    const user = await searchUserByIdBank(id);
+    const user = await searchUserByEmailBank(email);
+    delete user.password;
+    delete user.passwordResetToken;
+    delete user.passwordResetExpires;
     return user;
   } catch (err) {
     console.log(err);
