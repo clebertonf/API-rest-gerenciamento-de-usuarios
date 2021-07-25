@@ -1,14 +1,14 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
-const UserModel = require('../models/UserModel');
+const LoginModel = require('../models/LoginModel');
 const mailer = require('../modules/mailer');
 const {
-  emailExists, erroDataBank, noUsersFound, UserNotExists, InvalidPassword,
+  emailExists, erroDataBank, UserNotExists, InvalidPassword,
 } = require('../schemas/messagesErro');
 const token = require('../auth/createJWT');
 
 const searchUserByEmail = async (email) => {
-  const user = await UserModel.searchUserByEmailBank(email);
+  const user = await LoginModel.searchUserByEmailBank(email);
   if (!user) return UserNotExists;
 
   return user;
@@ -19,7 +19,7 @@ const createUser = async (name, email, password) => {
 
   const hash = await bcrypt.hash(password, saltRounds);
 
-  const userCreate = await UserModel.createUserBank(name, email, hash);
+  const userCreate = await LoginModel.createUserBank(name, email, hash);
   const user = await searchUserByEmail(email);
   delete user.password;
   const { _id } = user;
@@ -53,7 +53,7 @@ const forgotPassword = async (id, email) => {
 
     now.setHours(now.getHours() + 1);
 
-    await UserModel.editResetToken(id, randonToken, now);
+    await LoginModel.editResetToken(id, randonToken, now);
 
     mailer.sendMail({
       to: email,
@@ -75,13 +75,13 @@ const editPassword = async (email, password) => {
   const saltRounds = 10;
 
   const hash = await bcrypt.hash(password, saltRounds);
-  const editUser = await UserModel.editPassword(email, hash);
+  const editUser = await LoginModel.editPassword(email, hash);
 
   return editUser;
 };
 
 const existingEmailValidation = async (email) => {
-  const userExists = await UserModel.checkUserBankWithEmail(email);
+  const userExists = await LoginModel.checkUserBankWithEmail(email);
   if (userExists) return emailExists;
 };
 
