@@ -57,9 +57,11 @@ const forgotPassword = async (id, email) => {
   mailer.sendMail({
     to: email,
     from: 'clebertonfgc@gmail.com',
-    template: 'mail/forgot_password',
-    context: { randonToken },
-  }, (err) => console.log(err));
+    subject: 'Redefinição de Senha',
+    html: `<h3>Seu token para redefinir a senha esta aqui esta aqui <h3/> ${randonToken}`,
+
+  }, (err) => ({ code: 400, message: `Erro ao enviar o email, tente novamente!${err}` }));
+
   return { code: 200, message: 'Email redefinição de senha enviado com sucesso!' };
 };
 

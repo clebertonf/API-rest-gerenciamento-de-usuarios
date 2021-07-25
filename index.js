@@ -8,6 +8,6 @@ app.use(express.json());
 
 app.use(require('./routers/index'));
 
-const { PORT } = process.env || 3000;
+const { PORT_APP } = process.env || 3000;
 
-app.listen(PORT, () => console.log(`Servidor iniciou na porta ${PORT}`));
+app.listen(PORT_APP, () => console.log(`Servidor iniciou na porta ${PORT_APP}`));
