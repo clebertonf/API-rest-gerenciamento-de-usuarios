@@ -3,11 +3,17 @@ const connection = require('./connection');
 
 const createUserBank = async (name, email, password) => {
   const passwordResetToken = '';
-  const passwordResetExpires = '';
+  const passwordResetExpires = new Date('');
   const role = 'user';
   try {
     const userCreate = await connection().then((db) => db.collection('users').insertOne({
-      name, email, password, passwordResetToken, passwordResetExpires, role, createdAt: new Date(),
+      name,
+      email,
+      password,
+      passwordResetToken,
+      passwordResetExpires,
+      role,
+      createdAt: new Date(),
     }));
     return userCreate.acknowledged;
   } catch (err) {

@@ -49,9 +49,9 @@ const forgotPassword = async (id) => {
   const randonToken = crypto.randomBytes(20).toString('hex');
   const now = new Date();
 
-  const expirationOneHour = now.setHours(now.getHours() + 1);
+  now.setHours(now.getHours() + 1);
 
-  await UserModel.editResetToken(id, randonToken, expirationOneHour);
+  await UserModel.editResetToken(id, randonToken, now);
   return true;
 };
 

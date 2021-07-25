@@ -6,9 +6,9 @@ router.post('/register', UserController.createUser);
 router.post('/authenticate', UserController.authenticateUser);
 router.post('/forgot_password', UserController.forgotPassword);
 
-router.get('/', authenticate, UserController.searchAllUsers);
-router.get('/:id', authenticate, UserController.searchUserById);
-router.put('/:id', authenticate, UserController.editUser);
-router.delete('/:id', authenticate, UserController.deleteUser);
+router.get('/', UserController.searchAllUsers);
+router.get('/:id', UserController.searchUserById);
+router.put('/:id', UserController.editUser);
+router.delete('/:id', UserController.deleteUser);
 
 module.exports = router;
