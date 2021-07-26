@@ -10,7 +10,7 @@ Sua estrutura interna de arquivos  esta dividia  **Por papel técnico**.
 
 ## Estrutura
 
-![estrutura](./public/imgs/estrutura.png)
+![estrutura](./public/imgs/estrutura-project.png)
 
 MSC - MODEL, SERVICES e CONTROLLERS
 
