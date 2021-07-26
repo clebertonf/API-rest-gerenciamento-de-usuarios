@@ -120,7 +120,7 @@ Feito isso, verifique o `package.json`, la se encontram scripts para execução 
    }
    ```
 
-    ![201](./public/imgs/01-register201.png)
+    ![usuario criado](./public/imgs/01-register201.png)
 
 O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
@@ -146,7 +146,7 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
 - Validação email ja existente:
 
-  ![](./public/imgs/05-usuario-existe.png)
+  ![usuario existe](./public/imgs/05-usuario-existe.png)
 
   Caso o email enviado ja exista sera retornado Status code 409 com message: "Usuario ja cadastrado na base de dados!"
 
@@ -231,7 +231,7 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
 - Token invalido
 
-  ![token-invalido](./public/imgs/13-token-invalido.png)
+  ![token invalido](./public/imgs/13-token-invalido.png)
 
   ​	O retorno sera status code: 400, message: "Token invalido!" caso usuario passe um token não gerado pela aplicação.
 
@@ -306,7 +306,7 @@ Estes endpoints deverão conter em seus headers o Token JWT enviado tanto na hor
 }
 ```
 
-![](./public/imgs/20-edit-user-sucess.png)
+![usuario editado com sucesso](./public/imgs/20-edit-user-sucess.png)
 
 O retorno sera codigo Status 200, e as informaçoes do usuario editadas.
 
@@ -330,7 +330,7 @@ O retorno sera codigo Status 200, e as informaçoes do usuario editadas.
 
   - Ao passar um id inexistente:
 
-    ![](./public/imgs/23-Usuario-not-found-delete.png)
+    ![usuario não existe](./public/imgs/23-Usuario-not-found-delete.png)
 
     O retorno sera codigo Status 404, message: "Usuario não existe"
 
