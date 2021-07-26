@@ -237,7 +237,7 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
 - Token expirado
 
-  ​	![token expirado](./public/imgs/12-token expirado.png)
+  ​	![token expirado](./public/imgs/24-token-expirado.png)
 
   ​	O retorno sera status code: 400, message: "Token expirado!" caso usuario passe um token que ja tenha expirado, este    	token tem a validade maxima de 1 hora.
 
