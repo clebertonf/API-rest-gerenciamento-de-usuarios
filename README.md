@@ -316,7 +316,7 @@ O retorno sera codigo Status 200, e as informaçoes do usuario editadas.
 
   O retorno sera codigo Status 404, message: "Usuario não existe"
 
-  4. #### `DELETE` localhost:3000/user/id_do_usuario
+ 4. #### `DELETE` localhost:3000/user/id_do_usuario
 
      Este end point deleta um usuario cadastrado na base de dados baseado em seu id passado por parametro, basta somente passar o id correto.
 
