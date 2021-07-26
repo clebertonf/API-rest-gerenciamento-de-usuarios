@@ -32,6 +32,8 @@ MSC - MODEL, SERVICES e CONTROLLERS
 
 8. Pasta routers contem as rotas da aplicação.
 
+9. Pasta public contem as imagens utilizadas no projeto.
+
 ## tecnologias utilizadas
 
 - Linguagen:
