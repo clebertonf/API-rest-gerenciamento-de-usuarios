@@ -223,7 +223,7 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
    
 
-   ![](./public/imgs/12-edit_password.png)
+   ![](./public/imgs/12-token-expirado.png)
 
    O retorno e um status code 200, com os dados do usuario, e sua senha ja editada.
 
