@@ -144,7 +144,7 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
 - Validação email ja existente:
 
-  ![](/home/cleberton/Documentos/imagensReadme/api users/05-usuario-existe.png)
+  ![](./public/imgs/05-usuario-existe.png)
 
   Caso o email enviado ja exista sera retornado Status code 409 com message: "Usuario ja cadastrado na base de dados!"
 
@@ -157,7 +157,7 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
    		"password": "Sua senha"
    	}
 
-   ![login](/home/cleberton/Documentos/imagensReadme/api users/06-login.png)
+   ![login](./public/imgs/06-login.png)
 
    O retorno sera status code: 200, com as informaçoes do usuario.
 
@@ -165,13 +165,13 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
 - Usuario não Existe:
 
-  ![usuario não existe](/home/cleberton/Documentos/imagensReadme/api users/07-user-nao-existe.png)
+  ![usuario não existe](./public/imgs/07-user-nao-existe.png)
 
   O retorno sera status code: 400, message: "Usuario não existe!".
 
 - Senha Invalida:
 
-  ![senha invalida](/home/cleberton/Documentos/imagensReadme/api users/08-senha-invalida.png)
+  ![senha invalida](./public/imgs/08-senha-invalida.png)
 
   O retorno sera status code: 400: message: "Senha invalida!"
 
@@ -187,13 +187,13 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
    }
    ```
 
-   ![redefinicao senha](/home/cleberton/Documentos/imagensReadme/api users/09-redefinir-senha.png)
+   ![redefinicao senha](./public/imgs/09-redefinir-senha.png)
 
    O retorno e um status code 200, message: "Email redefinição de senha enviado com sucesso!". O email com token chega na caixa de email.
 
    Neste exemplo estou apenas enviando um token para o usuario via e-mail, pois a API não possui um Front-end, poderia tranquilamente enviar um link com a pagina de redefinição de senha etc. Aqui so quero demonstrar o disparo do email, este token enviado é requisitado em outra rota para a senha poder ser alterada.
 
-   ![caixa email](/home/cleberton/Documentos/imagensReadme/api users/10-caixaEmail.png)
+   ![caixa email](./public/imgs/10-caixaEmail.png)
 
    
 
@@ -201,7 +201,7 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
 - Usuario não existe ou campo passado em branco
 
-  ![](/home/cleberton/Documentos/imagensReadme/api users/11-user-not-exists.png)
+  ![](./public/imgs/11-user-not-exists.png)
 
   O retorno e um status 400, message: "usuario não existe".
 
@@ -221,7 +221,7 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
    
 
-   ![](/home/cleberton/Documentos/imagensReadme/api users/12-edit_password.png)
+   ![](./public/imgs/12-edit_password.png)
 
    O retorno e um status code 200, com os dados do usuario, e sua senha ja editada.
 
@@ -229,19 +229,19 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
 - Token invalido
 
-  ![token-invalido](/home/cleberton/Documentos/imagensReadme/api users/13-token-invalido.png)
+  ![token-invalido](./public/imgs/13-token-invalido.png)
 
   ​	O retorno sera status code: 400, message: "Token invalido!" caso usuario passe um token não gerado pela aplicação.
 
 - Token expirado
 
-  ​	![token expirado](/home/cleberton/Documentos/imagensReadme/api users/12-token expirado.png)
+  ​	![token expirado](./public/imgs/12-token expirado.png)
 
   ​	O retorno sera status code: 400, message: "Token expirado!" caso usuario passe um token que ja tenha expirado, este    	token tem a validade maxima de 1 hora.
 
 - Email inexistente
 
-  ![email inexistente](/home/cleberton/Documentos/imagensReadme/api users/14-usuario-nao-existe-reset-password.png)
+  ![email inexistente](./public/imgs/14-usuario-nao-existe-reset-password.png)
 
   ​	O retorno sera status code: 400, message: "usuario não existente!" caso for passado um email que não existe na base de dados.
 
@@ -251,13 +251,13 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
 Estes endpoints deverão conter em seus headers o Token JWT enviado tanto na hora do cadastro na API tanto na Hora do login, caso contrario todas estas rotas irão retornar erro de token não encontrado. como este exemplo abaixo:
 
-![](/home/cleberton/Documentos/imagensReadme/api users/17-token-not-found.png)
+![](./public/imgs/17-token-not-found.png)
 
 1. #### `GET` localhost:3000/user
 
    Este endpoint lista toos os usuarios cadastrados na base de dados, nesta rota e preciso estar com token JWT nos headers para validação de usuario logado.
 
-   ![get all users](/home/cleberton/Documentos/imagensReadme/api users/15-get-all-users.png)
+   ![get all users](./public/imgs/15-get-all-users.png)
 
    o retorno sera status code 200, com um array de usuarios cadastrados.
 
@@ -265,13 +265,13 @@ Estes endpoints deverão conter em seus headers o Token JWT enviado tanto na hor
 
 - Caso não tenha nehum usuario na base de dados
 
-  ![nenhum usuario encontrado](/home/cleberton/Documentos/imagensReadme/api users/16-nenhum-user-encontrado.png)
+  ![nenhum usuario encontrado](./public/imgs/16-nenhum-user-encontrado.png)
 
   
 
 - Caso token não seja passado
 
-  ![](/home/cleberton/Documentos/imagensReadme/api users/17-token-not-found.png)
+  ![](./public/imgs/17-token-not-found.png)
 
   
 
@@ -279,7 +279,7 @@ Estes endpoints deverão conter em seus headers o Token JWT enviado tanto na hor
 
    Este endpoint retorna baseado no id passado na URL o usuario correspondente na base de dados.
 
-   ![user-id](/home/cleberton/Documentos/imagensReadme/api users/18-user-by-id.png)
+   ![user-id](./public/imgs/18-user-by-id.png)
 
    ​	O retorno sera status code 200, com um usuario baseado no id.
 
@@ -287,7 +287,7 @@ Estes endpoints deverão conter em seus headers o Token JWT enviado tanto na hor
 
 - Ao passar um id Inexistente:
 
-  ![](/home/cleberton/Documentos/imagensReadme/api users/19-user-by-id-not-found.png)
+  ![](./public/imgs/19-user-by-id-not-found.png)
 
   O retorno sera status code 404, message: "Usuario não existe".
 
@@ -304,7 +304,7 @@ Estes endpoints deverão conter em seus headers o Token JWT enviado tanto na hor
 }
 ```
 
-![](/home/cleberton/Documentos/imagensReadme/api users/20-edit-user-sucess.png)
+![](./public/imgs/20-edit-user-sucess.png)
 
 O retorno sera codigo Status 200, e as informaçoes do usuario editadas.
 
@@ -312,7 +312,7 @@ O retorno sera codigo Status 200, e as informaçoes do usuario editadas.
 
 - Ao passar um id inexistente:
 
-  ![user-not-exist](/home/cleberton/Documentos/imagensReadme/api users/21-user-not-exist-edit.png)
+  ![user-not-exist](./public/imgs/21-user-not-exist-edit.png)
 
   O retorno sera codigo Status 404, message: "Usuario não existe"
 
@@ -320,7 +320,7 @@ O retorno sera codigo Status 200, e as informaçoes do usuario editadas.
 
      Este end point deleta um usuario cadastrado na base de dados baseado em seu id passado por parametro, basta somente passar o id correto.
 
-     ![](/home/cleberton/Documentos/imagensReadme/api users/22-delete-sucess.png)
+     ![](./public/imgs/22-delete-sucess.png)
 
      O retorno sera Status code 200, message: "Usuario excluido com sucesso!"
 
@@ -328,7 +328,7 @@ O retorno sera codigo Status 200, e as informaçoes do usuario editadas.
 
   - Ao passar um id inexistente:
 
-    ![](/home/cleberton/Documentos/imagensReadme/api users/23-Usuario-not-found-delete.png)
+    ![](./public/imgs/23-Usuario-not-found-delete.png)
 
     O retorno sera codigo Status 404, message: "Usuario não existe"
 
