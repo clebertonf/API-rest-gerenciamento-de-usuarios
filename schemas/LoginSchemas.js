@@ -12,7 +12,7 @@ const validatePasswordLength = (password) => {
 };
 
 const validateRegexEmail = (email) => {
-  const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   if (!regex.test(email)) return emailRegex;
 };
 

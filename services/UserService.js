@@ -3,9 +3,14 @@ const { erroDataBank, noUsersFound, UserNotExists } = require('../schemas/messag
 
 const searchAllUsers = async () => {
   const users = await UserModel.searchAllUsersBank();
+  console.log(users);
   if (!users) return erroDataBank;
   if (users.length >= 1) {
-    users.map((user) => delete user.password);
+    users.map((user) => {
+      delete user.password;
+      delete user.passwordResetToken;
+      delete user.passwordResetExpires;
+    });
     return users;
   }
   return noUsersFound;

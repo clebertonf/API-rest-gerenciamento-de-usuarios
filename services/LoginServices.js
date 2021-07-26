@@ -26,7 +26,7 @@ const createUser = async (name, email, password) => {
     delete userBank.password;
     const { _id } = userBank;
 
-    if (userCreate) return { code: 200, message: 'Usuario Criado com Sucesso!', token: token.createJWT(_id, name, email) };
+    if (userCreate) return { code: 201, message: 'Usuario Criado com Sucesso!', token: token.createJWT(_id, name, email) };
   }
 
   return emailExists;
@@ -42,6 +42,8 @@ const authenticateUser = async (email, password) => {
   if (!comparePassword) return InvalidPassword;
 
   delete user.password;
+  delete user.passwordResetToken;
+  delete user.passwordResetExpires;
   const { _id, name } = user;
 
   return {

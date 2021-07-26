@@ -1,7 +1,7 @@
 const UserSchemas = require('../schemas/LoginSchemas');
 const UserServices = require('../services/UserService');
 
-const searchAllUsers = async (req, resp) => {
+const searchAllUsers = async (_req, resp) => {
   const response = await UserServices.searchAllUsers();
 
   if (response.code) return resp.status(response.code).json({ message: response.message });

@@ -4,6 +4,6 @@ const LoginRouter = require('./LoginRouter');
 const authenticate = require('../middlewares/authMiddleware');
 
 router.use('/login', LoginRouter);
-router.use('/user', UserRouter);
+router.use('/user', authenticate, UserRouter);
 
 module.exports = router;

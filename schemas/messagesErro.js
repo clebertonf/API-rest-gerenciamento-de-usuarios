@@ -1,10 +1,10 @@
 const emptyFields = {
-  code: 205,
+  code: 400,
   message: 'Todos campos São Obrigatorios!',
 };
 
 const passwordLength = {
-  code: 205,
+  code: 400,
   message: 'Senha deve ter no minimo 6 caracteres!',
 };
 
@@ -24,27 +24,27 @@ const noUsersFound = {
 };
 
 const emailRegex = {
-  code: 205,
+  code: 400,
   message: 'Email formato invalido!',
 };
 
 const UserNotExists = {
-  code: 205,
+  code: 400,
   message: 'Usuario não existe!',
 };
 
 const InvalidPassword = {
-  code: 205,
+  code: 400,
   message: 'Senha invalida!',
 };
 
 const InvalidToken = {
-  code: 205,
+  code: 400,
   message: 'Token invalido!',
 };
 
 const ExpiresToken = {
-  code: 205,
+  code: 400,
   message: 'Token expirado!',
 };
 

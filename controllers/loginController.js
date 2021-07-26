@@ -4,11 +4,19 @@ const LoginServices = require('../services/LoginServices');
 const createUser = async (req, resp) => {
   const { name, email, password } = req.body;
 
-  const response = await LoginServices.createUser(name, email, password);
-  if (response.code) {
-    return resp.status(response.code)
-      .json({ message: response.message });
+  const validateFields = LoginSchemas.validationEmptyFields(name, email, password)
+    || LoginSchemas.validatePasswordLength(password) || LoginSchemas.validateRegexEmail(email);
+
+  if (!validateFields) {
+    const response = await LoginServices.createUser(name, email, password);
+    if (response.code) {
+      return resp.status(response.code)
+        .json({ message: response.message });
+    }
   }
+
+  return resp.status(validateFields.code)
+    .json({ message: validateFields.message });
 };
 
 const authenticateUser = async (req, resp) => {
