@@ -10,7 +10,7 @@ Sua estrutura interna de arquivos  esta dividia  **Por papel técnico**.
 
 ## Estrutura
 
-![](/home/cleberton/Documentos/imagensReadme/api users/estrutura.png)
+![estrutura](./public/imgs/estrutura.png)
 
 MSC - MODEL, SERVICES e CONTROLLERS
 
@@ -35,29 +35,29 @@ MSC - MODEL, SERVICES e CONTROLLERS
 ## tecnologias utilizadas
 
 - Linguagen:
-  - NodeJs
+    - NodeJs
 -  Database: 
-  - Mongodb
+    - Mongodb
 - Segurança: 
-  - bcrypt
+    - bcrypt
 - Autenticaçao e autorização:
-  - jsonwebtoken
+    - jsonwebtoken
 - Configurações
-  - Dotenv
+    - Dotenv
 - Envio de e-mails:
-  - nodemailer
+    - nodemailer
 - Organização e Padronização de codigo:
-  - Eslint / config-airbnb-base
+    - Eslint / config-airbnb-base
 - Facilitador de desenvolvimento:
-  - nodemon
+    - nodemon
 - framework:
-  - Express
+    - Express
 
 ## Começando
 
 #### Para executar o projeto, será necessário ter instalado:
 
-1. [ MongoDB](https://www.mongodb.com/try/download/community) banco utilizado para o desenvolvimento
+1. [MongoDB](https://www.mongodb.com/try/download/community) banco utilizado para o desenvolvimento
 2. [Insomnia](https://insomnia.rest/download) para fazer requisiçoes nas rotas da API. (ou qualquer outro para testes de API)
 
 #### proximos passos
@@ -118,7 +118,7 @@ Feito isso, verifique o `package.json`, la se encontram scripts para execução 
    }
    ```
 
-    ![201](/home/cleberton/Documentos/imagensReadme/api users/01-register201.png)
+    ![201](./public/imgs/01-register201.png)
 
 O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
@@ -126,19 +126,19 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
 - Todos os campos são obrigatorios:
 
-  ![campos obrigatorios](/home/cleberton/Documentos/imagensReadme/api users/02- campos obrigatorios.png)
+  ![campos obrigatorios](./public/imgs/02- campos obrigatorios.png)
 
   Caso não seja informado nehum campo ou faltando, sera retornado Status code: 400 com message : "Todos campos são obrigatorios".
 
 - Validação email:
 
-  ![validaçao email](/home/cleberton/Documentos/imagensReadme/api users/03-regex-email.png)
+  ![validaçao email](./public/imgs/03-regex-email.png)
 
   Caso e-mail seja invalido sera retornado Status code 400 com message: "Email formato invalido".
 
 - Validação senha:
 
-  ![validaçao senha](/home/cleberton/Documentos/imagensReadme/api users/04-validacoa-senha.png)
+  ![validaçao senha](./public/imgs/04-validacoa-senha.png)
 
   Caso senha tenha menos que 6 carateres sera retornado Status code 400 com message: "Senha deve ter no minimo 6 caracteres".
 
