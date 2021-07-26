@@ -4,7 +4,7 @@ Ola seja bem vindo ao repositorio do projeto API para gerenciamneto de Usuários
 
 Este projeto consiste em uma API no padrão rest para gerenciar usuarios em uma aplicação.
 
-Utilizei a arquitetura MSC para construir esta api, de forma que sua manutenção e adição de novas funcionalidades ficam mais faceis de se implementar.
+Utilizei a arquitetura **`MSC`** para construir esta api, de forma que sua **`manutenção e adição de novas funcionalidades`** ficam mais faceis de se implementar.
 
 Sua estrutura interna de arquivos  esta dividia  **Por papel técnico**.  
 
@@ -12,7 +12,7 @@ Sua estrutura interna de arquivos  esta dividia  **Por papel técnico**.
 
 ![estrutura](./public/imgs/estrutura-project.png)
 
-MSC - MODEL, SERVICES e CONTROLLERS
+**`MSC`** - MODEL, SERVICES e CONTROLLERS
 
 1. Pasta model e responsavel por toda interface com banco de dados, querys, conexão etc.
 
@@ -71,15 +71,15 @@ MSC - MODEL, SERVICES e CONTROLLERS
 
 Crie um arquivo com nome **`.env`** na raiz do projeto, dentro deste arquivo adicione as seguintes variaveis de ambiente:
 
-1. MONGO_DB_URL = *Aqui insira sua url de coneção com mongo*
-2. PORT_APP=  *Aqui insira a porta que API ira funcionar (Padrão 3000)*
-3. JWT_SECRET= Aqui insira uma chave para geração token JWT (De preferência um hash MD5)
+1. **`MONGO_DB_URL=`** *Aqui insira sua url de coneção com mongo*
+2. **`PORT_APP=`**  *Aqui insira a porta que API ira funcionar (Padrão 3000)*
+3. **`JWT_SECRET=`** Aqui insira uma chave para geração token JWT (De preferência um hash MD5)
 
 ------
 
-Existe uma pasta chamada modules, esta pasta possui dois arquivos de configuração do servidor de envio de e-mails, a rota `/login//forgot_password` da API necessita destas configurações para o envio de e-mail com recuperação de senha e funcionar corretamente.
+Existe uma pasta chamada **`modules`**, esta pasta possui dois arquivos de configuração do servidor de envio de e-mails, a rota `/login/forgot_password` da API necessita destas configurações para o envio de e-mail com recuperação de senha funcionar corretamente.
 
-Utilizei o serviço [mail trap](https://mailtrap.io/) para testes de desenvolvimento, caso ache conveniente utilize o mesmo, com as instruçoes abaixo:
+Utilizei o serviço [mail trap](https://mailtrap.io/) para testes de desenvolvimento. Caso ache conveniente utilize o mesmo, com as instruçoes abaixo:
 
 1. Crie uma conta no [mail trap](https://mailtrap.io/)
 
@@ -101,7 +101,7 @@ Utilizei o serviço [mail trap](https://mailtrap.io/) para testes de desenvolvim
 
 ## Executando API
 
-Feito isso, verifique o `package.json`, la se encontram scripts para execução do projeto.
+Verifique o `package.json`, la se encontram scripts para execução do projeto.
 
 - `"debug": "nodemon index.js",`  (`npm run debug`) inicia o projeto com nodemon.
 - `"start": "node index.js",` (`npm start`) inicia o projeto com  node.
