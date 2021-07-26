@@ -29,7 +29,7 @@ const emailRegex = {
 };
 
 const UserNotExists = {
-  code: 400,
+  code: 404,
   message: 'Usuario não existe!',
 };
 

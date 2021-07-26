@@ -21,6 +21,8 @@ const searchUserById = async (id) => {
   if (!user) return UserNotExists;
 
   delete user.password;
+  delete user.passwordResetToken;
+  delete user.passwordResetExpires;
   return user;
 };
 
@@ -29,6 +31,8 @@ const editUser = async (id, name, email) => {
   if (!userEdit) return UserNotExists;
 
   delete userEdit.password;
+  delete userEdit.passwordResetToken;
+  delete userEdit.passwordResetExpires;
   return userEdit;
 };
 

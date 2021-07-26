@@ -26,7 +26,7 @@ const editUser = async (req, resp) => {
 
   if (response.code) return resp.status(response.code).json({ message: response.message });
 
-  return resp.status(201)
+  return resp.status(200)
     .json(response);
 };
 
