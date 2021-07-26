@@ -128,7 +128,7 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
 - Todos os campos são obrigatorios:
 
-  ![campos obrigatorios](./public/imgs/02- campos obrigatorios.png)
+  ![campos obrigatorios](./public/imgs/02- campos-obrigatorios.png)
 
   Caso não seja informado nehum campo ou faltando, sera retornado Status code: 400 com message : "Todos campos são obrigatorios".
 
