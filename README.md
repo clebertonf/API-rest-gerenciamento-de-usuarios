@@ -71,9 +71,9 @@ MSC - MODEL, SERVICES e CONTROLLERS
 
 Crie um arquivo com nome **`.env`** na raiz do projeto, dentro deste arquivo adicione as seguintes variaveis de ambiente:
 
-MONGO_DB_URL = *Aqui insira sua url de coneção com mongo*
-PORT_APP=  *Aqui insira a porta que API ira funcionar (Padrão 3000)*
-JWT_SECRET= Aqui insira uma chave para geração token JWT (De preferência um hash MD5)
+1. MONGO_DB_URL = *Aqui insira sua url de coneção com mongo*
+2. PORT_APP=  *Aqui insira a porta que API ira funcionar (Padrão 3000)*
+3. JWT_SECRET= Aqui insira uma chave para geração token JWT (De preferência um hash MD5)
 
 ------
 
