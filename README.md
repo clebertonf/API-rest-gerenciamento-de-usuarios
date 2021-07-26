@@ -75,6 +75,8 @@ Crie um arquivo com nome **`.env`** na raiz do projeto, dentro deste arquivo adi
 2. **`PORT_APP=`**  *Aqui insira a porta que API ira funcionar (Padrão 3000)*
 3. **`JWT_SECRET=`** Aqui insira uma chave para geração token JWT (De preferência um hash MD5)
 
+![arquivo .env](./public/imgs/25-env.png)
+
 ------
 
 Existe uma pasta chamada **`modules`**, esta pasta possui dois arquivos de configuração do servidor de envio de e-mails, a rota `/login/forgot_password` da API necessita destas configurações para o envio de e-mail com recuperação de senha funcionar corretamente.
