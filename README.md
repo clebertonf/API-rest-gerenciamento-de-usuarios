@@ -240,33 +240,33 @@ O retorno: Status code : 201 com message: "Usuário criado com Sucesso!"
 
   ​	![token expirado](./public/imgs/24-token-expirado.png)
 
-  ​	O retorno sera status code: 400, message: "Token expirado!" caso usuario passe um token que ja tenha expirado, este    	token tem a validade maxima de 1 hora.
+  ​	O retorno será status code: 400, message: "Token expirado!" caso usuário passe um token que já tenha expirado, este    	token tem a validade máxima de 1 hora.
 
 - Email inexistente
 
   ![email inexistente](./public/imgs/14-usuario-nao-existe-reset-password.png)
 
-  ​	O retorno sera status code: 400, message: "usuario não existente!" caso for passado um email que não existe na base de dados.
+  ​	O retorno será status code: 400, message: "usuário não existente!" caso for passado um email que não existe na base de dados.
 
 ------
 
 ## Endpoints da API (listar todos usuarios, listar usuario pelo ID,  editar e deletar usuario)
 
-Estes endpoints deverão conter em seus headers o Token JWT enviado tanto na hora do cadastro na API tanto na Hora do login, caso contrario todas estas rotas irão retornar erro de token não encontrado. como este exemplo abaixo:
+Estes endpoints deverão conter em seus headers o Token JWT enviado tanto na hora do cadastro na API quanto na Hora do login, caso contrario todas estas rotas irão retornar erro de token não encontrado. como este exemplo abaixo:
 
 ![](./public/imgs/17-token-not-found.png)
 
 1. #### `GET` localhost:3000/user
 
-   Este endpoint lista toos os usuarios cadastrados na base de dados, nesta rota e preciso estar com token JWT nos headers para validação de usuario logado.
+   Este endpoint lista todos os usuários cadastrados na base de dados, nesta rota é preciso estar com token JWT nos headers para validação de usuário logado.
 
    ![get all users](./public/imgs/15-get-all-users.png)
 
-   o retorno sera status code 200, com um array de usuarios cadastrados.
+   o retorno será status code 200, com um array de usuários cadastrados.
 
 #### validações
 
-- Caso não tenha nehum usuario na base de dados
+- Caso não tenha nenhum usuário na base de dados
 
   ![nenhum usuario encontrado](./public/imgs/16-nenhum-user-encontrado.png)
 
@@ -280,11 +280,11 @@ Estes endpoints deverão conter em seus headers o Token JWT enviado tanto na hor
 
 2. #### `GET` localhost:3000/user/id_do_usuario
 
-   Este endpoint retorna baseado no id passado na URL o usuario correspondente na base de dados.
+   Este endpoint retorna baseado no id passado na URL o usuário correspondente na base de dados.
 
    ![user-id](./public/imgs/18-user-by-id.png)
 
-   ​	O retorno sera status code 200, com um usuario baseado no id.
+   ​	O retorno será status code 200, com um usuário baseado no id.
 
 #### Validações
 
@@ -292,13 +292,13 @@ Estes endpoints deverão conter em seus headers o Token JWT enviado tanto na hor
 
   ![](./public/imgs/19-user-by-id-not-found.png)
 
-  O retorno sera status code 404, message: "Usuario não existe".
+  O retorno será status code 404, message: "Usuário não existe".
 
 
 
 3. ####  `PUT` localhost:3000/user/id _do_usuario
 
-   Este endpoint edita um usuario baseado em seu id passado na URL, espera-se um JSON no corpo da requisição conforme abaixo, So e permitido a alteração do email e do nome, pois a senha so e possivel editar na rota `/forgot_password`.
+   Este endpoint edita um usuário baseado em seu id passado na URL, espera-se um JSON no corpo da requisição conforme abaixo, Só e permitido a alteração do email e do nome, pois a senha só e possivel editar na rota `/forgot_password`.
 
 ```
 {
@@ -307,9 +307,9 @@ Estes endpoints deverão conter em seus headers o Token JWT enviado tanto na hor
 }
 ```
 
-![usuario editado com sucesso](./public/imgs/20-edit-user-sucess.png)
+![usuário editado com sucesso](./public/imgs/20-edit-user-sucess.png)
 
-O retorno sera codigo Status 200, e as informaçoes do usuario editadas.
+O retorno será código Status 200, e as informações do usuário editadas.
 
 #### Validaçoes
 
@@ -317,15 +317,15 @@ O retorno sera codigo Status 200, e as informaçoes do usuario editadas.
 
   ![user-not-exist](./public/imgs/21-user-not-exist-edit.png)
 
-  O retorno sera codigo Status 404, message: "Usuario não existe"
+  O retorno será código Status 404, message: "Usuário não existe"
 
  4. #### `DELETE` localhost:3000/user/id_do_usuario
 
-     Este end point deleta um usuario cadastrado na base de dados baseado em seu id passado por parametro, basta somente passar o id correto.
+     Este end point deleta um usuário cadastrado na base de dados baseado em seu id passado por parametro, basta somente passar o id correto.
 
-     ![](./public/imgs/22-delete-sucess.png)
+     ![usuario deletado com sucesso](./public/imgs/22-delete-sucess.png)
 
-     O retorno sera Status code 200, message: "Usuario excluido com sucesso!"
+     O retorno será Status code 200, message: "Usuário excluido com sucesso!"
 
   #### Validaçoes
 
@@ -333,10 +333,10 @@ O retorno sera codigo Status 200, e as informaçoes do usuario editadas.
 
     ![usuario não existe](./public/imgs/23-Usuario-not-found-delete.png)
 
-    O retorno sera codigo Status 404, message: "Usuario não existe"
+    O retorno será código Status 404, message: "Usuário não existe"
 
   
 
   ------
 
-  Por fim, esta API esta pasando por constantes evoluçoes, sinta-se a vontade para contrbuir.
+  Por fim, esta API esta pasando por constantes evoluções, sinta-se a vontade para contrbuir.
