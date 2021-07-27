@@ -2,11 +2,11 @@
 
 Ola seja bem vindo ao repositorio do projeto API para gerenciamneto de Usuários. :rocket:
 
-Este projeto consiste em uma API no padrão rest para gerenciar usuarios em uma aplicação.
+Este projeto consiste em uma API no padrão rest para gerenciar usuários em uma aplicação.
 
 Utilizei a arquitetura **`MSC`** para construir esta api, de forma que sua **`manutenção e adição de novas funcionalidades`** ficam mais faceis de se implementar.
 
-Sua estrutura interna de arquivos  esta dividia  **Por papel técnico**.  
+Sua estrutura interna de arquivos  esta dividida  **Por papel técnico**.  
 
 ## Estrutura
 
@@ -14,45 +14,44 @@ Sua estrutura interna de arquivos  esta dividia  **Por papel técnico**.
 
 **`MSC`** - MODEL, SERVICES e CONTROLLERS
 
-1. Pasta model e responsavel por toda interface com banco de dados, querys, conexão etc.
+1. Pasta model é responsável por toda interface com banco de dados, query's, conexão etc.
 
-2. Pasta Services se concentra toda regra de negocio e chamadas ao banco de dados.
+2. Pasta Services se concentra toda regra de negócio e chamadas ao banco de dados.
 
-3. Pasta Controllers se dedica apenas para receber requisiçoes e direcionar ao services, e por
-
-    consequencia receber as respostas e repassar para rotas da aplicação.
+3. Pasta Controllers se dedica apenas para receber requisições e direcionar ao services, e por
+    consequência receber as respostas e repassar para rotas da aplicação.
 
 4. Pasta Schemas ficam todas as validações da aplicação, ex: regex de email etc.
 
-5. Pasta auth Pasta referente a autenticação, mais especifico geração de JWT.
+5. Pasta auth é referente a autenticação, mais especifico geração de JWT.
 
 6. Pasta de middlewares ficam os middlewares, mais especifico de autenticação.
 
-7. Pasta modules ficam as configuraçoes do SMTP de envio de email.
+7. Pasta modules ficam as configurações do SMTP de envio de email.
 
-8. Pasta routers contem as rotas da aplicação.
+8. Pasta routers contém as rotas da aplicação.
 
-9. Pasta public contem as imagens utilizadas no projeto.
+9. Pasta public contém as imagens utilizadas no projeto.
 
 ## tecnologias utilizadas
 
-- Linguagen:
+- Linguagens:
     - NodeJs
 -  Database: 
     - Mongodb
 - Segurança: 
     - bcrypt
-- Autenticaçao e autorização:
+- Autenticação e autorização:
     - jsonwebtoken
 - Configurações
     - Dotenv
-- Envio de e-mails:
+- Envio de emails:
     - nodemailer
 - Organização e Padronização de codigo:
     - Eslint / config-airbnb-base
 - Facilitador de desenvolvimento:
     - nodemon
-- framework:
+- framework's:
     - Express
 
 ## Começando
@@ -60,32 +59,32 @@ Sua estrutura interna de arquivos  esta dividia  **Por papel técnico**.
 #### Para executar o projeto, será necessário ter instalado:
 
 1. [MongoDB](https://www.mongodb.com/try/download/community) banco utilizado para o desenvolvimento
-2. [Insomnia](https://insomnia.rest/download) para fazer requisiçoes nas rotas da API. (ou qualquer outro para testes de API)
+2. [Insomnia](https://insomnia.rest/download) para fazer requisições nas rotas da API. (ou qualquer outro para testes de API)
 
 #### proximos passos
 
-- Clone o repositorio `  git clone git@github.com:clebertonf/API-rest-gerenciamento-de-usuarios.git`
+- Clone o repositório `  git clone git@github.com:clebertonf/API-rest-gerenciamento-de-usuarios.git`
 - Na raiz do projeto rode o comando **npm install** para instalar as depedências do projeto.
 
 ## Configuracão
 
-Crie um arquivo com nome **`.env`** na raiz do projeto, dentro deste arquivo adicione as seguintes variaveis de ambiente:
+Crie um arquivo com nome **`.env`** na raiz do projeto, dentro deste arquivo adicione as seguintes variáveis de ambiente:
 
-1. **`MONGO_DB_URL=`** *Aqui insira sua url de coneção com mongo*
-2. **`PORT_APP=`**  *Aqui insira a porta que API ira funcionar (Padrão 3000)*
-3. **`JWT_SECRET=`** Aqui insira uma chave para geração token JWT (De preferência um hash MD5)
+1. **`MONGO_DB_URL=`** *Aqui insira sua url de conexão com mongo*
+2. **`PORT_APP=`**  *Aqui insira a porta que API irá funcionar (Padrão 3000)*
+3. **`JWT_SECRET=`** Aqui insira uma chave para geração do token JWT (De preferência um hash MD5)
 
 ![arquivo .env](./public/imgs/25-env.png)
 
 ------
 
-Existe uma pasta chamada **`modules`**, esta pasta possui dois arquivos de configuração do servidor de envio de e-mails, a rota `/login/forgot_password` da API necessita destas configurações para o envio de e-mail com recuperação de senha funcionar corretamente.
+Existe uma pasta chamada **`modules`**, esta pasta possui dois arquivos de configuração do servidor de envio de emails, a rota `/login/forgot_password` da API necessita destas configurações para o envio de email com recuperação de senha funcionar corretamente.
 
-Utilizei o serviço [mail trap](https://mailtrap.io/) para testes de desenvolvimento. Caso ache conveniente utilize o mesmo, com as instruçoes abaixo:
+Utilizei o serviço [mail trap](https://mailtrap.io/) para testes de desenvolvimento. Caso ache conveniente utilize o mesmo, com as instruções abaixo:
 
 1. Crie uma conta no [mail trap](https://mailtrap.io/)
 
-2. Acesse SMTP Settings e Selecione no DropDown disponivel as configuraçoẽs para NodeJs, sera um Objeto como mostrado abaixo, nele havera suas credenciais que serão inseridas no arquivo `config.js` do projeto, copie apenas os campos mostrados no arquivo `config.js` . Feito isso seu SMTP esta pronto para envio de emails.
+2. Acesse SMTP Settings e Selecione no DropDown disponivel as configurações para NodeJs, será um Objeto como mostrado abaixo, nele havera suas credenciais que serão inseridas no arquivo `config.js` do projeto, copie apenas os campos mostrados no arquivo `config.js` . Feito isso seu SMTP esta pronto para envio de emails.
 
    ```
    var transport = nodemailer.createTransport({
@@ -108,11 +107,11 @@ Verifique o `package.json`, la se encontram scripts para execução do projeto.
 - `"debug": "nodemon index.js",`  (`npm run debug`) inicia o projeto com nodemon.
 - `"start": "node index.js",` (`npm start`) inicia o projeto com  node.
 
-## Endpoints da API (cadastro, login, autenticaçao, recuperação de senha)
+## Endpoints da API (cadastro, login, autenticação, recuperação de senha)
 
 1. ####  `POST` localhost:3000/login/register
 
-   Este endpoint registra um usuario na base de dados, o metodo é do tipo POST, e deve ser passado um JSON no corpo da Requisição conforme Abaixo:
+   Este endpoint registra um usuário na base de dados, o método é do tipo POST, e deve ser passado um JSON no corpo da Requisição conforme Abaixo:
 
    ```
    {
@@ -124,7 +123,7 @@ Verifique o `package.json`, la se encontram scripts para execução do projeto.
 
     ![usuario criado](./public/imgs/01-register201.png)
 
-O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
+O retorno: Status code : 201 com message: "Usuário criado com Sucesso!"
 
 #### Validações:
 
@@ -132,29 +131,29 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
   ![campos obrigatorios](./public/imgs/02-campos-obrigatorios.png)
 
-  Caso não seja informado nehum campo ou faltando, sera retornado Status code: 400 com message : "Todos campos são obrigatorios".
+  Caso não seja informado nehum campo ou faltando, será retornado Status code: 400 com message : "Todos campos são obrigatorios".
 
 - Validação email:
 
   ![validaçao email](./public/imgs/03-regex-email.png)
 
-  Caso e-mail seja invalido sera retornado Status code 400 com message: "Email formato invalido".
+  Caso email seja inválido será retornado Status code 400 com message: "Email formato inválido".
 
-- Validação senha:
+- Validação de senha:
 
   ![validaçao senha](./public/imgs/04-validacoa-senha.png)
 
-  Caso senha tenha menos que 6 carateres sera retornado Status code 400 com message: "Senha deve ter no minimo 6 caracteres".
+  Caso senha tenha menos que 6 carateres será retornado Status code 400 com message: "Senha deve ter no minimo 6 caracteres".
 
-- Validação email ja existente:
+- Validação email já existente:
 
   ![usuario existe](./public/imgs/05-usuario-existe.png)
 
-  Caso o email enviado ja exista sera retornado Status code 409 com message: "Usuario ja cadastrado na base de dados!"
+  Caso o email enviado já exista será retornado Status code 409 com message: "Usuario já cadastrado na base de dados!"
 
 2. ####  `POST` localhost:3000/login/authenticate
 
-   Este endPoint faz o login do usuario na aplicação, O metodo e do tipo POST. E retornando um objeto com informações do usurario, e um token JWT para autenticação. Deve-se passar email e senha, conforme o exemplo abaixo:
+   Este endPoint faz o login do usuário na aplicação, O mátodo e do tipo POST. É retornando um objeto com informações do usuário, e um token JWT para autenticação. Deve-se passar email e senha, conforme o exemplo abaixo:
 
    	{
    		"email": "Seu email",
@@ -163,27 +162,27 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
    ![login](./public/imgs/06-login.png)
 
-   O retorno sera status code: 200, com as informaçoes do usuario.
+   O retorno será status code: 200, com as informações do usuário.
 
-#### Validaçoes:
+#### Validações:
 
-- Usuario não Existe:
+- Usuário não Existe:
 
   ![usuario não existe](./public/imgs/07-user-nao-existe.png)
 
-  O retorno sera status code: 400, message: "Usuario não existe!".
+  O retorno será status code: 400, message: "Usuário não existe!".
 
-- Senha Invalida:
+- Senha Inválida:
 
-  ![senha invalida](./public/imgs/08-senha-invalida.png)
+  ![senha inválida](./public/imgs/08-senha-invalida.png)
 
-  O retorno sera status code: 400: message: "Senha invalida!"
+  O retorno será status code: 400: message: "Senha inválida!"
 
 
 
 3. #### `POST` localhost:3000/login/forgot_password
 
-   Este endpoint dispara um e-mail para usuario cadastrado caso ele esqueça a senha, entregando um token para recuperação de sua senha. Deve-se passar o email que queria recuperar sua senha, conforme abaixo:
+   Este endpoint dispara um e-mail para usuário cadastrado caso ele esqueça a senha, entregando um token para recuperação de sua senha. Deve-se passar o email que queria recuperar sua senha, conforme abaixo:
 
    ```
    {
@@ -193,9 +192,9 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
    ![redefinicao senha](./public/imgs/09-redefinir-senha.png)
 
-   O retorno e um status code 200, message: "Email redefinição de senha enviado com sucesso!". O email com token chega na caixa de email.
+   O retorno á um status code 200, message: "Email redefinição de senha enviado com sucesso!". O email com token chega na caixa de email.
 
-   Neste exemplo estou apenas enviando um token para o usuario via e-mail, pois a API não possui um Front-end, poderia tranquilamente enviar um link com a pagina de redefinição de senha etc. Aqui so quero demonstrar o disparo do email, este token enviado é requisitado em outra rota para a senha poder ser alterada.
+   Neste exemplo estou apenas enviando um token para o usuário via e-mail, pois a API não possui um Front-end, poderia tranquilamente enviar um link com a página de redefinição de senha etc. Aqui só quero demonstrar o disparo do email, este token enviado é requisitado em outra rota para a senha poder ser alterada.
 
    ![caixa email](./public/imgs/10-caixaEmail.png)
 
@@ -203,17 +202,17 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
 #### Validações
 
-- Usuario não existe ou campo passado em branco
+- Usuário não existe ou campo passado em branco
 
-  ![](./public/imgs/11-user-not-exists.png)
+  ![usuário não existe](./public/imgs/11-user-not-exists.png)
 
-  O retorno e um status 400, message: "usuario não existe".
+  O retorno é um status 400, message: "Usuário não existe".
 
 
 
 4. #### `POST` localhost:3000/login/reset_password
 
-   Este endpoint faz a redefinição da senha do usuario, para ele conseguir alterar sua senha sera preciso passar alem das informaçoes de email e senha tambem o token enviado por email. Deve se passar o email, a nova senha e o token enviado pelo email, exemplo abaixo:
+   Este endpoint faz a redefinição da senha do usuário, para ele conseguir alterar sua senha será preciso passar alem das informações de email e senha também o token enviado por email. Deve se passar o email, a nova senha e o token enviado, exemplo abaixo:
 
    ```
    {
@@ -225,17 +224,17 @@ O retorno: Status code : 201 com message: "Usuario criado com Sucesso!"
 
    
 
-   ![](./public/imgs/12-token-expirado.png)
+   ![token expirado](./public/imgs/12-edit_password.png)
 
-   O retorno e um status code 200, com os dados do usuario, e sua senha ja editada.
+   O retorno é um status code 200, com os dados do usuário, e sua senha já editada.
 
 #### Validações
 
 - Token invalido
 
-  ![token invalido](./public/imgs/13-token-invalido.png)
+  ![token inválido](./public/imgs/13-token-invalido.png)
 
-  ​	O retorno sera status code: 400, message: "Token invalido!" caso usuario passe um token não gerado pela aplicação.
+  ​	O retorno será status code: 400, message: "Token inválido!" caso usuário passe um token não gerado pela aplicação.
 
 - Token expirado
 
