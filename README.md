@@ -60,7 +60,7 @@ Sua estrutura interna de arquivos  esta dividida  **Por papel técnico**.
 
 1. [MongoDB](https://www.mongodb.com/try/download/community) banco utilizado para o desenvolvimento
 2. [Insomnia](https://insomnia.rest/download) para fazer requisições nas rotas da API. (ou qualquer outro para testes de API)
-3. [NodeJS](https://nodejs.org/en/)Este projeto necessita do NodeJs instalado em seu computador para rodar localmente.
+3. [NodeJS] (https://nodejs.org/en/)Este projeto necessita do NodeJs instalado em seu computador para rodar localmente.
 
 #### proximos passos
 
