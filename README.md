@@ -1,4 +1,4 @@
-## API Rest com gerenciamento de usuários
+## API Rest com gerenciamento de usuários :desktop_computer:
 
 Ola seja bem vindo ao repositorio do projeto API para gerenciamneto de Usuários. :rocket:
 
