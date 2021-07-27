@@ -1,4 +1,4 @@
-## API Rest com gerenciamento de usuários :desktop_computer:
+## API Rest com gerenciamento de usuários Node.JS :desktop_computer:
 
 Olá seja bem vindo ao repositorio do projeto API para gerenciamneto de Usuários. :rocket:
 
