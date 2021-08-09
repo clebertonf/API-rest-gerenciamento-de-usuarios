@@ -85,7 +85,7 @@ Utilizei o serviço [mail trap](https://mailtrap.io/) para testes de desenvolvim
 
 1. Crie uma conta no [mail trap](https://mailtrap.io/)
 
-2. Acesse SMTP Settings e Selecione no DropDown disponivel as configurações para NodeJs, será um Objeto como mostrado abaixo, nele havera suas credenciais que serão inseridas no arquivo `config.js` do projeto, copie apenas os campos mostrados no arquivo `config.js` . Feito isso seu SMTP esta pronto para envio de emails.
+2. Acesse SMTP Settings e Selecione no DropDown disponível as configurações para NodeJs, será um Objeto como mostrado abaixo, nele haverá suas credenciais que serão inseridas no arquivo `config.js` do projeto, copie apenas os campos mostrados no arquivo `config.js` . Feito isso seu SMTP esta pronto para envio de emails.
 
    ```
    var transport = nodemailer.createTransport({
@@ -103,7 +103,7 @@ Utilizei o serviço [mail trap](https://mailtrap.io/) para testes de desenvolvim
 
 ## Executando API
 
-Verifique o `package.json`, la se encontram scripts para execução do projeto.
+Verifique o `package.json`, lá se encontram scripts para execução do projeto.
 
 - `"debug": "nodemon index.js",`  (`npm run debug`) inicia o projeto com nodemon.
 - `"start": "node index.js",` (`npm start`) inicia o projeto com  node.
