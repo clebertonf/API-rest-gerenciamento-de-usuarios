@@ -299,7 +299,7 @@ Estes endpoints deverão conter em seus headers o Token JWT enviado tanto na hor
 
 3. ####  `PUT` localhost:3000/user/id _do_usuario
 
-   Este endpoint edita um usuário baseado em seu id passado na URL, espera-se um JSON no corpo da requisição conforme abaixo, Só e permitido a alteração do email e do nome, pois a senha só e possivel editar na rota `/forgot_password`.
+   Este endpoint edita um usuário baseado em seu id passado na URL, espera-se um JSON no corpo da requisição conforme abaixo, Só é permitido a alteração do email e do nome, pois a senha só é possivel editar na rota `/forgot_password`.
 
 ```
 {
